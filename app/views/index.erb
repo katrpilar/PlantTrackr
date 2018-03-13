@@ -1,35 +1,45 @@
 <nav>
-   <div class="nav-wrapper lime darken-2">
+   <div class="nav-wrapper green darken-1">
      <a href="#!" class="brand-logo">PlantTrack</a>
      <ul class="right hide-on-med-and-down">
-       <li><a href="/signup" class="waves-effect waves-light btn">Signup</a></li>
-       <li><a href="/login" class="waves-effect waves-light btn">Login</a></li>
+       <li><a href="/signup" class="waves-effect waves-light btn  deep-orange lighten-1">Signup</a></li>
+       <li><a href="/login" class="waves-effect waves-light btn cyan darken-1">Login</a></li>
      </ul>
    </div>
  </nav>
 
-   <div class="slider">
-     <ul class="slides">
-       <li>
-         <img src="https://images.pexels.com/photos/709785/pexels-photo-709785.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"> <!-- random image -->
-         <div class="caption center-align">
-           <h3>This is our big Tagline!</h3>
-           <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-         </div>
-       </li>
-       <li>
-         <img src="https://images.pexels.com/photos/6370/nature-flowers-white-plants.jpg?w=1260&h=750&dpr=3&auto=compress&cs=tinysrgb"> <!-- random image -->
-         <div class="caption center-align">
-           <h3>This is our big Tagline!</h3>
-           <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-         </div>
-       </li>
-       <li>
-         <img src="https://images.pexels.com/photos/351961/pexels-photo-351961.jpeg?w=1260&h=750&dpr=3&auto=compress&cs=tinysrgb"> <!-- random image -->
-         <div class="caption center-align">
-           <h3>This is our big Tagline!</h3>
-           <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-         </div>
-       </li>
-     </ul>
-   </div>
+<section>
+  <div class="row">
+      <div class="slider">
+       <ul class="slides">
+         <li>
+           <img src="https://images.pexels.com/photos/8795/plant-cactus.jpg?w=1260&h=750&dpr=3&auto=compress&cs=tinysrgb"> <!-- random image -->
+           <div class="caption center-align">
+             <h3>A Personal Plant Assistant</h3>
+             <h5 class="light grey-text text-lighten-3">Your green thumb has arrived</h5>
+           </div>
+         </li>
+         <li>
+           <img src="https://images.pexels.com/photos/707194/pexels-photo-707194.jpeg?w=1260&h=750&dpr=3&auto=compress&cs=tinysrgb"> <!-- random image -->
+           <div class="caption center-align">
+             <h3>My garden is my most beautiful masterpiece.</h3>
+             <h5 class="light grey-text text-lighten-3">— Claude Monet</h5>
+           </div>
+         </li>
+         <li>
+           <img src="https://images.pexels.com/photos/793012/pexels-photo-793012.jpeg?w=1260&h=750&dpr=3&auto=compress&cs=tinysrgb"> <!-- random image -->
+           <div class="caption center-align">
+             <h3>Welcome to PlantTrack</h3>
+             <h5 class="light grey-text text-lighten-3">Signup Today</h5>
+           </div>
+         </li>
+       </ul>
+      </div>
+    </section>
+  </div>
+<script>
+$(document).ready(function(){
+  $('.slider').slider({full_width: true});
+  $('.slider').slider({height: 700});
+});
+</script>

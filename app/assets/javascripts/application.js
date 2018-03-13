@@ -1,9 +1,6 @@
 //= require jquery
 //= require materialize
 
-$(document).ready(function(){
-  $('.slider').slider();
-});
 
 // Pause slider
 $('.slider').slider('pause');
