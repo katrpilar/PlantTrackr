@@ -1,9 +1,9 @@
 class CreateStatuses < ActiveRecord::Migration[5.1]
   def change
-    create_table :plants do |t|
-      t.string :name
-      t.string :picture
-      t.integer :owner_id
+    create_table :statuses do |t|
+      t.string :update
+      t.date :status_date
+      t.integer :plant_id
     end
   end
 end

@@ -3,8 +3,7 @@ class CreatePlants < ActiveRecord::Migration[5.1]
     create_table :plants do |t|
       t.string :name
       t.string :picture
-      t.integer :owner_id
-      
+      t.integer :user_id
     end
   end
 end
