@@ -46,10 +46,6 @@ class ApplicationController < Sinatra::Base
     erb :'/users/all_users'
   end
 
-  # post '/plants' do
-  #   erb :'/plants'
-  # end
-
   get '/login' do
     if session.include?(:user_id)
       redirect '/plants'
@@ -75,6 +71,16 @@ class ApplicationController < Sinatra::Base
     else
       redirect "/login"
     end
+  end
+
+  post '/plants' do
+    @plant = Plant.new(name: params[:name], )
+
+  end
+
+  get '/plants/:id' do
+    @plant = Plant.find_by_id(params[:id])
+    erb :'/plants/show_plant'
   end
 
 end

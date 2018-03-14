@@ -1,0 +1,63 @@
+t.string :name
+t.string :picture
+t.string :sunlight
+t.string :soil
+t.string :container_size
+t.string :drainage
+t.integer :user_id
+
+<nav>
+   <div class="nav-wrapper green darken-1">
+     <a href="/" class="brand-logo">PlantTrack</a>
+     <ul class="right hide-on-med-and-down">
+       <li><a href="/logout" class="waves-effect waves-light btn blue-grey lighten-3">Logout</a></li>
+     </ul>
+   </div>
+ </nav>
+
+<section>
+  <div class="col s6 offset-s3">
+ <div class="row">
+   <h3 class="header center-align" style="color:#00acc1;">Add a New Plant</h3>
+   <h6 class="center-align"></h6>
+ </div>
+ </div>
+</section>
+
+<div class="row">
+    <form action="/plants" class="col s12" method="POST">
+      <div class="row">
+        <div class="input-field col s6 offset-s3">
+          <input id="name" type="text" name="name">
+          <label for="name">Plant Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6 offset-s3">
+          <input id="email" type="text" class="validate">
+          <label for="email" data-error="wrong" data-success="right">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6 offset-s3">
+          <input id="password" type="password" class="validate" name="password">
+          <label for="password">Password</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6 offset-s3">
+          <input type="submit" class="waves-effect waves-light btn deep-orange lighten-1" name="submit"></input>
+          <a href="/login" class="waves-effect waves-light btn blue-grey lighten-3">Login</a>
+        </div>
+      </div>
+    </form>
+</div>
+
+<ul class="pagination">
+    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+    <li class="active"><a href="#!">1</a></li>
+    <li class="waves-effect"><a href="/instructions">2</a></li>
+    <li class="waves-effect"><a href="/statuses">3</a></li>
+    <li class="waves-effect"><a href="/plants/<%=@plant.id%>">4</a></li>
+    <li class="waves-effect"><a href="/instructions" class="waves-effect waves-light btn blue-grey lighten-3">Next</a></li>
+  </ul>
