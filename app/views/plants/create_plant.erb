@@ -7,170 +7,183 @@
    </div>
  </nav>
 
-<section>
-  <div class="col s6 offset-s3">
- <div class="row">
-   <h4 class="header center-align" style="color:#00acc1;">Add a New Plant</h4>
-   <h6 class="center-align"></h6>
- </div>
+ <div class="parallax-container" style="height:300px;">
+   <h2 class="header center-align" style="color:white; padding-top:6%;">Add a New Plant</h2>
+   <div class="parallax"><img src="https://images.pexels.com/photos/572487/pexels-photo-572487.jpeg?w=1260&h=750&dpr=3&auto=compress&cs=tinysrgb"></div>
  </div>
 
-
-<div class="row">
-    <form action="/plants" class="col s12" method="POST">
-      <div class="row">
-        <div class="input-field col s8 offset-s2">
-          <input id="name" type="text" name="name">
-          <label for="name">Plant Name</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s8 offset-s2">
-          <input id="picture" type="text" name="picture">
-          <label for="picture">Photo Url</label>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col s2 offset-s2">
-          <h6 style="color:#00acc1;">Sunlight Needs</h6>
-          <p>
-          <input name="sunlight" type="radio" id="sunlight_low" />
-          <label for="sunlight_low">Low</label>
-        </p>
-          <p>
-          <input name="sunlight" type="radio" id="sunlight_med" />
-          <label for="sunlight_med">Medium</label>
-        </p>
-          <p>
-          <input name="sunlight" type="radio" id="sunlight_high" />
-          <label for="sunlight_high">High</label>
-        </p>
-        </div>
-        <div class="col s2">
-          <h6 style="color:#00acc1;">Soil Type</h6>
-          <p>
-            <input name="soil" type="radio" id="soil-clay" />
-            <label for="soil-clay">Clay</label>
-          </p>
-          <p>
-            <input name="soil" type="radio" id="soil-silt" />
-            <label for="soil-silt">Silt</label>
-          </p>
-          <p>
-            <input name="soil" type="radio" id="soil-peaty" />
-            <label for="soil-peaty">Peaty</label>
-          </p>
-          <p>
-            <input name="soil" type="radio" id="soil-loam" />
-            <label for="soil-loam">Loam</label>
-          </p>
-          <p>
-            <input name="soil" type="radio" id="soil-chalky" />
-            <label for="soil-chalky">Chalky</label>
-          </p>
-          <!--<select>
-            <option value="" disabled selected>Choose the soil type</option>
-            <option value="sandy" onclick="Materialize.toast('I am a toast', 4000)">Sandy</option>
-            <option value="clay">Clay</option>
-            <option value="silt" >Silt</option>
-            <option value="peaty">Peaty</option>
-            <option value="loam">Loam</option>
-            <option value="chalky">Chalky</option>
-          </select>
-        <label>Soil Type</label>
-        <p id="soil-description" style="color:#00acc1;">thing</p>
-      -->
-        </div>
-
-        <div class="col s2">
-          <h6 style="color:#00acc1;">Container Size</h6>
-          <p>
-            <input name="container" type="radio" id="container-xs" />
-            <label for="container-xs">Extra Small</label>
-          </p>
-          <p>
-            <input name="container" type="radio" id="container-sm" />
-            <label for="container-sm">Small</label>
-          </p>
-          <p>
-            <input name="container" type="radio" id="container-med" />
-            <label for="container-med">Medium</label>
-          </p>
-          <p>
-            <input name="container" type="radio" id="container-lg" />
-            <label for="container-lg">Large</label>
-          </p>
-        </div>
-
-        <div class="col s2">
-          <h6 style="color:#00acc1;">Soil Drainage Needs</h6>
-          <p>
-            <input name="drainage" type="radio" id="drainage-low" />
-            <label for="drainage-low">Low</label>
-          </p>
-          <p>
-            <input name="drainage" type="radio" id="drainage-med" />
-            <label for="drainage-med">Medium</label>
-          </p>
-          <p>
-            <input name="drainage" type="radio" id="drainage-high" />
-            <label for="drainage-high">High</label>
-          </p>
-          <p>
-            <input name="drainage" type="radio" id="drainage-very-high" />
-            <label for="drainage-very-high">Very High</label>
-          </p>
-        </div>
-      </div>
-</section>
 
 <section>
   <div class="row">
    <div class="col s8 offset-s2">
       <div class="card">
        <div class="card-content">
-         <h4 class="header center-align" style="color:#00acc1;">Add care instructions</h4>
-         <div class="row">
-           <div class="input-field col s4">
-             <input id="water-amt" type="text" name="water_amt">
-             <label for="water-amt">Water Amount</label>
-           </div>
-           <div class="input-field col s8">
-           <select name="water_amt_unit">
-             <option value="" disabled selected>Unit of Water</option>
-             <option value="spritz">Spritz</option>
-             <option value="tsp">Teaspoon(s)</option>
-             <option value="tbsp" >Tablespoon(s)</option>
-             <option value="cup">Cup(s)</option>
-             <option value="pint" >Pint(s)</option>
-             <option value="oz">Ounce(s)</option>
-             <option value="quart">Quart(s)</option>
-             </select>
-              <label>Water Unit</label>
-           </div>
-         </div>
+        <!--<h4 class="header center-align" style="color:#00acc1;">Add a New Plant</h4>-->
+      <div class="row">
+          <form action="/plants" class="col s12" method="POST">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="name" type="text" name="name">
+                <label for="name">Plant Name</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="picture" type="text" name="picture">
+                <label for="picture">Photo Url</label>
+              </div>
+            </div>
 
-         <div class="row">
-           <div class="input-field col s4">
-             <input id="water-freq" type="text" name="water_freq">
-             <label for="water-freq">Water Frequency</label>
-           </div>
-           <div class="input-field col s8">
-           <select name="water_freq_unit">
-             <option value="" disabled selected>Frequency Unit</option>
-             <option value="day">Day(s)</option>
-             <option value="week">Week(s)</option>
-             <option value="month" >Month(s)</option>
-             </select>
-              <label>Frequency</label>
-           </div>
-         </div>
-       </div>
+            <div class="row">
+              <div class="col s3">
+                <h6 style="color:#00acc1;">Sunlight Needs</h6>
+                <p>
+                <input name="sunlight" type="radio" id="sunlight_low" />
+                <label for="sunlight_low">Low</label>
+              </p>
+                <p>
+                <input name="sunlight" type="radio" id="sunlight_med" />
+                <label for="sunlight_med">Medium</label>
+              </p>
+                <p>
+                <input name="sunlight" type="radio" id="sunlight_high" />
+                <label for="sunlight_high">High</label>
+              </p>
+              </div>
+              <div class="col s3">
+                <h6 style="color:#00acc1;">Soil Type</h6>
+                <p>
+                  <input name="soil" type="radio" id="soil-clay" />
+                  <label for="soil-clay">Clay</label>
+                </p>
+                <p>
+                  <input name="soil" type="radio" id="soil-silt" />
+                  <label for="soil-silt">Silt</label>
+                </p>
+                <p>
+                  <input name="soil" type="radio" id="soil-peaty" />
+                  <label for="soil-peaty">Peaty</label>
+                </p>
+                <p>
+                  <input name="soil" type="radio" id="soil-loam" />
+                  <label for="soil-loam">Loam</label>
+                </p>
+                <p>
+                  <input name="soil" type="radio" id="soil-chalky" />
+                  <label for="soil-chalky">Chalky</label>
+                </p>
+                <!--<select>
+                  <option value="" disabled selected>Choose the soil type</option>
+                  <option value="sandy" onclick="Materialize.toast('I am a toast', 4000)">Sandy</option>
+                  <option value="clay">Clay</option>
+                  <option value="silt" >Silt</option>
+                  <option value="peaty">Peaty</option>
+                  <option value="loam">Loam</option>
+                  <option value="chalky">Chalky</option>
+                </select>
+              <label>Soil Type</label>
+              <p id="soil-description" style="color:#00acc1;">thing</p>
+            -->
+              </div>
+
+              <div class="col s3">
+                <h6 style="color:#00acc1;">Container Size</h6>
+                <p>
+                  <input name="container" type="radio" id="container-xs" />
+                  <label for="container-xs">Extra Small</label>
+                </p>
+                <p>
+                  <input name="container" type="radio" id="container-sm" />
+                  <label for="container-sm">Small</label>
+                </p>
+                <p>
+                  <input name="container" type="radio" id="container-med" />
+                  <label for="container-med">Medium</label>
+                </p>
+                <p>
+                  <input name="container" type="radio" id="container-lg" />
+                  <label for="container-lg">Large</label>
+                </p>
+              </div>
+
+              <div class="col s3">
+                <h6 style="color:#00acc1;">Soil Drainage Needs</h6>
+                <p>
+                  <input name="drainage" type="radio" id="drainage-low" />
+                  <label for="drainage-low">Low</label>
+                </p>
+                <p>
+                  <input name="drainage" type="radio" id="drainage-med" />
+                  <label for="drainage-med">Medium</label>
+                </p>
+                <p>
+                  <input name="drainage" type="radio" id="drainage-high" />
+                  <label for="drainage-high">High</label>
+                </p>
+                <p>
+                  <input name="drainage" type="radio" id="drainage-very-high" />
+                  <label for="drainage-very-high">Very High</label>
+                </p>
+              </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+          </div>
+      </section>
+
+<div class="parallax-container" style="height:500px">
+ <div class="parallax"><img src="https://images.pexels.com/photos/212323/pexels-photo-212323.jpeg?w=1260&h=750&dpr=3&auto=compress&cs=tinysrgb">
+      <section>
+        <div class="row">
+         <div class="col s8 offset-s2">
+           <!--<h2 class="header center-align" style="color:white;">Add Care Instructions</h2>-->
+            <div class="card">
+             <div class="card-content">
+               <h4 class="header center-align" style="color:#00acc1;">Add care instructions</h4>
+               <div class="row">
+                 <div class="input-field col s4">
+                   <input id="water-amt" type="text" name="water_amt">
+                   <label for="water-amt">Water Amount</label>
+                 </div>
+                 <div class="input-field col s8">
+                 <select name="water_amt_unit">
+                   <option value="" disabled selected>Unit of Water</option>
+                   <option value="spritz">Spritz</option>
+                   <option value="tsp">Teaspoon(s)</option>
+                   <option value="tbsp" >Tablespoon(s)</option>
+                   <option value="cup">Cup(s)</option>
+                   <option value="pint" >Pint(s)</option>
+                   <option value="oz">Ounce(s)</option>
+                   <option value="quart">Quart(s)</option>
+                   </select>
+                    <label>Water Unit</label>
+                 </div>
+               </div>
+
+               <div class="row">
+                 <div class="input-field col s4">
+                   <input id="water-freq" type="text" name="water_freq">
+                   <label for="water-freq">Water Frequency</label>
+                 </div>
+                 <div class="input-field col s8">
+                 <select name="water_freq_unit">
+                   <option value="" disabled selected>Frequency Unit</option>
+                   <option value="day">Day(s)</option>
+                   <option value="week">Week(s)</option>
+                   <option value="month" >Month(s)</option>
+                   </select>
+                    <label>Frequency</label>
+                 </div>
+               </div>
+             </div>
      </div>
    </div>
   </div>
 </section>
+</div>
+</div> <!--end parallax image-->
 
  <section>
    <div class="row">
@@ -252,6 +265,7 @@
 $(document).ready(function() {
   $('select').material_select();
   $('.tooltipped').tooltip({delay: 50});
+  $('.parallax').parallax();
 });
 
 $('.datepicker').pickadate({
