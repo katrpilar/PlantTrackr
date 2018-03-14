@@ -6,7 +6,7 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    set :session_secret, "plantsarepowerful"
+    set :session_secret, "secret"
   end
 
   get '/' do
@@ -27,7 +27,7 @@ class ApplicationController < Sinatra::Base
     if params[:username] == "" || params[:email] == "" || params[:password] == ""
       redirect to '/signup'
     else
-      @user = User.new(username: params[:username], email: params[:email], password_digest: params[:password])
+      @user = User.new(username: params[:username], email: params[:email], password: params[:password])
       if @user.save
         session[:user_id] = @user.id
         redirect to '/plants'
@@ -59,8 +59,7 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/login' do
-   user = User.find_by(username: params[:username])
-
+   user = User.find_by(username: params[:username], email: params[:email])
    if user && user.authenticate(params[:password])
      session[:user_id] = user.id
      redirect '/plants'
