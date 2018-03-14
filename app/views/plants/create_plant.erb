@@ -173,13 +173,45 @@
     <div class="col s8 offset-s2">
        <div class="card">
         <div class="card-content">
+          <h4 class="header center-align" style="color:#00acc1;">Plant Status</h4>
           <span class="card-title activator grey-text text-darken-4">
             <div class="input-field">
               <input id="status" type="text" name="status">
               <label for="status">Status Update</label>
             </div>
             </span>
-          <p><a href="#">This is a link</a></p>
+
+            <div class="input-field">
+            <select>
+              <option value="" disabled selected>How's your plant looking?</option>
+              <option value="healthy">Healthy</option>
+              <option value="curling">Curling</option>
+              <option value="drooping">Drooping</option>
+              <option value="yellowing">Yellowing</option>
+              <option value="lspots">Light Spots</option>
+              <option value="dspots">Dark Spots</option>
+              <option value="dead">Dead Leaves</option>
+              </select>
+               <label>Leaf Status</label>
+            </div>
+
+            <div class="input-field">
+            <select>
+              <option value="" disabled selected>How's the soil feel?</option>
+              <option value="verydry">Extremely Dry</option>
+              <option value="dry">Dry</option>
+              <option value="damp">Damp</option>
+              <option value="soaked">Soaked</option>
+              <option value="mildew">Showing Mildew</option>
+              </select>
+               <label>Soil Status</label>
+            </div>
+
+
+          <label for="status-date">Select the date</label>
+          <input type="text" class="datepicker" id="status-date">
+
+
         </div>
         <div class="card-reveal">
           <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
@@ -213,6 +245,15 @@
 $(document).ready(function() {
   $('select').material_select();
   $('.tooltipped').tooltip({delay: 50});
+});
+
+$('.datepicker').pickadate({
+  selectMonths: true, // Creates a dropdown to control month
+  selectYears: 15, // Creates a dropdown of 15 years to control year,
+  today: 'Today',
+  clear: 'Clear',
+  close: 'Ok',
+  closeOnSelect: false // Close upon selecting a date,
 });
 
 function changeSoilDescription() {
