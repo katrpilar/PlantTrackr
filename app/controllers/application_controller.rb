@@ -74,8 +74,22 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/plants' do
-    @plant = Plant.new(name: params[:name], )
-
+    # t.string :event
+    # t.date :event_date
+    # t.string :soil_status
+    # t.string :leaf_status
+    if params[:name] != ""
+      @plant = Plant.create(name: params[:name], picture: params[:picture], sunlight: params[:sunlight], soil: params[:soil], container_size: params[:container], drainage: params[:drainage])
+      @plant.user = User.find_by_id(session[:user_id])
+      @plant.save
+      @instruction = Instruction.create(water_amt: params[:water_amt], water_amt_unit: params[:water_amt_unit], water_freq: params[:water_freq], water_freq_unit: params[:water_freq_unit])
+      @instruction.plant = @plant.id
+      @status = Status.create(event: params[:event], event_date: params[:event_date], soil_status: params[:soil_status], leaf_status: params[:leaf_status])
+      @status.plant = @plant.id
+      redirect to :"/plants/#{@plant.id}"
+    else
+      redirect to :'/plants/new'
+    end
   end
 
   get '/plants/:id' do

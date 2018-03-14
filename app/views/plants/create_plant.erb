@@ -26,7 +26,7 @@
       </div>
       <div class="row">
         <div class="input-field col s8 offset-s2">
-          <input id="picture" type="text">
+          <input id="picture" type="text" name="picture">
           <label for="picture">Photo Url</label>
         </div>
       </div>
@@ -133,11 +133,11 @@
          <h4 class="header center-align" style="color:#00acc1;">Add care instructions</h4>
          <div class="row">
            <div class="input-field col s4">
-             <input id="water-amt" type="text" name="water-amt">
+             <input id="water-amt" type="text" name="water_amt">
              <label for="water-amt">Water Amount</label>
            </div>
            <div class="input-field col s8">
-           <select>
+           <select name="water_amt_unit">
              <option value="" disabled selected>Unit of Water</option>
              <option value="spritz">Spritz</option>
              <option value="tsp">Teaspoon(s)</option>
@@ -157,7 +157,7 @@
              <label for="water-freq">Water Frequency</label>
            </div>
            <div class="input-field col s8">
-           <select>
+           <select name="water_freq_unit">
              <option value="" disabled selected>Frequency Unit</option>
              <option value="day">Day(s)</option>
              <option value="week">Week(s)</option>
@@ -177,9 +177,9 @@
     <div class="col s8 offset-s2">
        <div class="card">
         <div class="card-content">
-          <h4 class="header center-align" style="color:#00acc1;">Plant Status</h4>
+          <h4 class="header center-align" style="color:#00acc1;">Add a Plant Status</h4>
           <div class="input-field">
-          <select>
+          <select name="event">
             <option value="" disabled selected>Select an event</option>
             <option value="watered">Watered</option>
             <option value="pruned">Pruned</option>
@@ -191,10 +191,10 @@
           </div>
 
         <label for="status-date">Select the Event date</label>
-        <input type="text" class="datepicker" id="status-date">
+        <input type="text" class="datepicker" id="status-date" name="event_date">
 
             <div class="input-field">
-            <select>
+            <select name="leaf_status">
               <option value="" disabled selected>How's your plant looking?</option>
               <option value="healthy">Healthy</option>
               <option value="curling">Curling</option>
@@ -208,7 +208,7 @@
             </div>
 
             <div class="input-field">
-            <select>
+            <select name="soil_status">
               <option value="" disabled selected>How's the soil feel?</option>
               <option value="verydry">Extremely Dry</option>
               <option value="dry">Dry</option>
