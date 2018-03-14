@@ -50,8 +50,8 @@
       </div>
 
       <div class="row">
-        <div class="input-field col s6 offset-s3">
-          <select>
+        <div class="input-field col s6 offset-s3" >
+          <select id="soilType">
             <option value="" disabled selected>Choose the soil type</option>
             <option value="sandy">Sandy</option>
             <option value="clay">Clay</option>
@@ -61,7 +61,7 @@
             <option value="chalky">Chalky</option>
           </select>
         <label>Soil Type</label>
-        <p id="soil-description" style="color:#00acc1;"></p>
+        <p id="soil-description" style="color:#00acc1;">thing</p>
         </div>
       </div>
 
@@ -86,36 +86,35 @@
   </ul>
 
 <script>
-function changeSoilDescription() {
+$(document).ready(function() {
+  $('select').material_select();
+});
+
+$('.select-wrapper').change(function () {
   var elem = document.getElementById('soil-description');
-  var selected = document.getElementsByClassName('active selected')[0].innerText
+  var selected = document.getElementsByClassName('active selected')[0].innerText;
 
   switch(selected) {
     case "Sandy":
-        elem.innerText = "Sandy soils are light, dry, warm, low in nutrients and often acidic"
+        elem.innerText = "Sandy soils are light, dry, warm, low in nutrients and often acidic";
         break;
     case "Clay":
-      elem.innerText = "Clay soils are heavy, high in nutrients, wet and cold in winter and baked dry in summer"
+      elem.innerText = "Clay soils are heavy, high in nutrients, wet and cold in winter and baked dry in summer";
         break;
     case "Silt":
-      elem.innerText = "Silt soils are fertile, light but moisture-retentive, and easily compacted"
+      elem.innerText = "Silt soils are fertile, light but moisture-retentive, and easily compacted";
         break;
     case "Peaty":
-      elem.innerText = "Peat soils are very high in organic matter and moisture"
+      elem.innerText = "Peat soils are very high in organic matter and moisture";
         break;
     case "Loam":
-      elem.innerText = "Loams are mixtures of clay, sand and silt that avoid the extremes of each type"
+      elem.innerText = "Loams are mixtures of clay, sand and silt that avoid the extremes of each type";
         break;
     case "Chalky":
-      elem.innerText = "Chalky soils are very alkaline and may be light or heavy"
+      elem.innerText = "Chalky soils are very alkaline and may be light or heavy";
         break;
     default:
-      elem.innerText = ""
-    }
-}
-
-$(document).ready(function() {
-  $('select').material_select();
-  changeSoilDescription;
+      elem.innerText = "";
+    };
 });
 </script>
