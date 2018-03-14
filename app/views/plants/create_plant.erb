@@ -126,47 +126,51 @@
 </section>
 
 <section>
-  <div class="col s6 offset-s3">
- <div class="row">
-   <h4 class="header center-align" style="color:#00acc1;">Add care instructions</h4>
-   <h6 class="center-align"></h6>
- </div>
- </div>
+  <div class="row">
+   <div class="col s8 offset-s2">
+      <div class="card">
+       <div class="card-content">
+         <h4 class="header center-align" style="color:#00acc1;">Add care instructions</h4>
+         <div class="row">
+           <div class="input-field col s4">
+             <input id="water-amt" type="text" name="water-amt">
+             <label for="water-amt">Water Amount</label>
+           </div>
+           <div class="input-field col s8">
+           <select>
+             <option value="" disabled selected>Unit of Water</option>
+             <option value="spritz">Spritz</option>
+             <option value="tsp">Teaspoon(s)</option>
+             <option value="tbsp" >Tablespoon(s)</option>
+             <option value="cup">Cup(s)</option>
+             <option value="pint" >Pint(s)</option>
+             <option value="oz">Ounce(s)</option>
+             <option value="quart">Quart(s)</option>
+             </select>
+              <label>Water Unit</label>
+           </div>
+         </div>
 
- <div class="row">
-   <div class="input-field col s2 offset-s2">
-     <input id="water-amt" type="text" name="water-amt">
-     <label for="water-amt">Water Amount</label>
+         <div class="row">
+           <div class="input-field col s4">
+             <input id="water-freq" type="text" name="water_freq">
+             <label for="water-freq">Water Frequency</label>
+           </div>
+           <div class="input-field col s8">
+           <select>
+             <option value="" disabled selected>Frequency Unit</option>
+             <option value="day">Day(s)</option>
+             <option value="week">Week(s)</option>
+             <option value="month" >Month(s)</option>
+             </select>
+              <label>Frequency</label>
+           </div>
+         </div>
+       </div>
+     </div>
    </div>
-   <div class="input-field col s2">
-   <select>
-     <option value="" disabled selected>Unit of Water</option>
-     <option value="spritz">Spritz</option>
-     <option value="tsp">Teaspoon(s)</option>
-     <option value="tbsp" >Tablespoon(s)</option>
-     <option value="cup">Cup(s)</option>
-     <option value="pint" >Pint(s)</option>
-     <option value="oz">Ounce(s)</option>
-     <option value="quart">Quart(s)</option>
-     </select>
-      <label>Water Unit</label>
-   </div>
-
-   <div class="input-field col s2">
-     <input id="water-freq" type="text" name="water_freq">
-     <label for="water-freq">Water Frequency</label>
-   </div>
-   <div class="input-field col s2">
-   <select>
-     <option value="" disabled selected>Frequency Unit</option>
-     <option value="day">Day(s)</option>
-     <option value="week">Week(s)</option>
-     <option value="month" >Month(s)</option>
-     </select>
-      <label>Frequency</label>
-   </div>
- </div>
- </section>
+  </div>
+</section>
 
  <section>
    <div class="row">
@@ -174,12 +178,20 @@
        <div class="card">
         <div class="card-content">
           <h4 class="header center-align" style="color:#00acc1;">Plant Status</h4>
-          <span class="card-title activator grey-text text-darken-4">
-            <div class="input-field">
-              <input id="status" type="text" name="status">
-              <label for="status">Status Update</label>
-            </div>
-            </span>
+          <div class="input-field">
+          <select>
+            <option value="" disabled selected>Select an event</option>
+            <option value="watered">Watered</option>
+            <option value="pruned">Pruned</option>
+            <option value="moved-more-sun">Moved to More Sun</option>
+            <option value="moved-less-sun">Moved to Less Sun</option>
+            <option value="moved-less-sun">Repotted</option>
+            </select>
+             <label>Event</label>
+          </div>
+
+        <label for="status-date">Select the Event date</label>
+        <input type="text" class="datepicker" id="status-date">
 
             <div class="input-field">
             <select>
@@ -206,11 +218,6 @@
               </select>
                <label>Soil Status</label>
             </div>
-
-
-          <label for="status-date">Select the date</label>
-          <input type="text" class="datepicker" id="status-date">
-
 
         </div>
         <div class="card-reveal">
