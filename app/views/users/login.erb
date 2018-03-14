@@ -1,0 +1,43 @@
+<nav>
+   <div class="nav-wrapper green darken-1">
+     <a href="#!" class="brand-logo">PlantTrack</a>
+   </div>
+ </nav>
+
+<section>
+  <div class="col s6 offset-s3">
+ <div class="row">
+   <h3 class="header center-align" style="color:#00acc1;">Log In</h3>
+   <h6 class="center-align">Green Thumb Made Easy</h6>
+ </div>
+ </div>
+</section>
+
+<div class="row">
+    <form action="/login" class="col s12" method="POST">
+      <div class="row">
+        <div class="input-field col s6 offset-s3">
+          <input id="username" type="text" class="validate" name="username">
+          <label for="username">Username</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6 offset-s3">
+          <input id="email" type="email" class="validate">
+          <label for="email" data-error="wrong" data-success="right">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6 offset-s3">
+          <input id="password" type="text" class="validate" name="password">
+          <label for="password">Password</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6 offset-s3">
+          <input type="submit" class="waves-effect waves-light btn deep-orange lighten-1" name="submit"></input>
+          <a href="/signup" class="waves-effect waves-light btn blue-grey lighten-3">Sign Up</a>
+        </div>
+      </div>
+    </form>
+</div>

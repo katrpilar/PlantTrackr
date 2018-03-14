@@ -41,8 +41,41 @@ class ApplicationController < Sinatra::Base
     erb :'/plants/create_plant'
   end
 
+  get '/admin' do
+    @users = User.all
+    erb :'/users/all_users'
+  end
+
   # post '/plants' do
   #   erb :'/plants'
   # end
+
+  get '/login' do
+    if session.include?(:user_id)
+      redirect '/plants'
+    else
+      erb :'/users/login'
+    end
+  end
+
+  post '/login' do
+   user = User.find_by(username: params[:username])
+
+   if user && user.authenticate(params[:password])
+     session[:user_id] = user.id
+     redirect '/plants'
+   else
+     redirect '/login'
+   end
+  end
+
+  get '/logout' do
+    if session.include?(:user_id)
+      session.clear
+      redirect "/login"
+    else
+      redirect "/login"
+    end
+  end
 
 end
