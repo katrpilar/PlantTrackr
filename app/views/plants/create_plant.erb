@@ -23,13 +23,13 @@
           <form action="/plants" class="col s12" method="POST">
             <div class="row">
               <div class="input-field col s12">
-                <input id="name" type="text" name="name">
+                <input id="name" type="text" name="plant[name]">
                 <label for="name">Plant Name</label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
-                <input id="picture" type="text" name="picture">
+                <input id="picture" type="text" name="plant[picture]">
                 <label for="picture">Photo Url</label>
               </div>
             </div>
@@ -145,11 +145,11 @@
                <h4 class="header center-align" style="color:#00acc1;">Add care instructions</h4>
                <div class="row">
                  <div class="input-field col s4">
-                   <input id="water-amt" type="text" name="water_amt">
+                   <input id="water-amt" type="text" name="status[water_amt]">
                    <label for="water-amt">Water Amount</label>
                  </div>
                  <div class="input-field col s8">
-                 <select name="water_amt_unit">
+                 <select name="status[water_amt_unit]">
                    <option value="" disabled selected>Unit of Water</option>
                    <option value="spritz">Spritz</option>
                    <option value="tsp">Teaspoon(s)</option>
@@ -192,6 +192,7 @@
        <div class="card">
         <div class="card-content">
           <h4 class="header center-align" style="color:#00acc1;">Add a Plant Status Event</h4>
+          <h5 class="header center-align" style="color:#00acc1;">Keep Your Plant Up-to-date</h5>
           <div class="input-field">
           <select name="event">
             <option value="" disabled selected>Select an event</option>
