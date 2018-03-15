@@ -99,4 +99,14 @@ class ApplicationController < Sinatra::Base
     erb :'/plants/show_plant'
   end
 
+  delete '/plants/:id/delete' do
+    @plant = Plant.find_by_id(params[:id])
+    if session[:user_id] == @plant.user_id
+      @plant.delete
+      redirect to :'/plants'
+    else
+      redirect to :'/login'
+    end
+  end
+
 end

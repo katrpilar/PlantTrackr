@@ -26,19 +26,23 @@
         </div>
       </div>-->
 
-      </div>
+    </div></div>
       <!--<div class="input-field col s6">-->
+      <!--<div class="carousel">-->
+      <div class="row container">
       <%@plants.each do |plant|%>
+          <div class="col s6">
+            <!--<div class="carousel-item">-->
               <div class="card large">
                 <div class="fixed-action-btn toolbar">
-                    <a class="btn-floating btn-sm red">
+                    <a class="btn-floating btn-sm green darken-1">
                       <i class="large material-icons">mode_edit</i>
                     </a>
                     <ul>
                       <li class="waves-effect waves-light"><a href="#!"><i class="material-icons">fullscreen</i></a></li>
                       <li class="waves-effect waves-light"><a href="#!"><i class="material-icons">edit</i></a></li>
-                      <li class="waves-effect waves-light"><a href="#!"><i class="material-icons">control_point_duplicate</i></a></li>
-                      <li class="waves-effect waves-light"><a href="#!"><i class="material-icons">delete_forever</i></a></li>
+                      <li class="waves-effect waves-light"><a href="#!"><i class="material-icons">content_copy</i></a></li>
+                      <li class="waves-effect waves-light"><a href="#" onclick="$(this).closest('form').submit()"><i class="material-icons">delete_forever</i></a></li>
                     </ul>
                   </div>
                 <div class="card-image waves-effect waves-block waves-light">
@@ -57,10 +61,18 @@
                   <p>Here is some more information about this product that is only revealed once clicked on.</p>
                 </div>
               </div>
+            <!--</div>-->
+
+            <form id="deleteplant" action="/plants/<%=plant.id%>/delete" method="post" style="display:none !important;">
+              <input id="hidden" type="hidden" name="_method" value="delete">
+              <input type="submit" value="Delete Tweet" id="delete">
+            </form>
+          </div>
+
       <%end%>
-    </div>
+      </div>
+      <!--</div>-->
   <!--</div>-->
-</div>
 
 <script>
 $(document).ready(function(){
