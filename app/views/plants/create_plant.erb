@@ -19,7 +19,29 @@
        <div class="card-content">-->
         <h4 class="header center-align" style="color:#00acc1; margin-top:50px;">Add a New Plant</h4>
       <div class="row">
-          <form action="/plants" class="col s12" method="POST">
+          <form id="newplant" action="/plants" class="col s12" method="POST">
+            <!--<div class="input-field">
+
+                      <select name="car">
+              <option value="volvo">Volvo</option>
+              <option value="saab">Saab</option>
+              <option value="opel">Opel</option>
+              <option value="audi">Audi</option>
+            </select>
+          </div>
+
+          <div class="input-field" id="plant_statuses_event">
+          <select name="plant[statuses][event]">
+            <option value="" disabled selected>Select an event</option>
+            <option class="water_status" value="Watered" id="watered">Watered</option>
+            <option class="water_status" value="Pruned" id="pruned">Pruned</option>
+            <option class="water_status" value="Move to More Sun" id="moresun">Moved to More Sun</option>
+            <option class="water_status" value="Moved to Less Sun" id="lesssun">Moved to Less Sun</option>
+            <option class="water_status" value="Repotted" id="repotted">Repotted</option>
+            </select>
+             <label for="plant_statuses_event">Event</label>
+          </div>-->
+
             <div class="row">
               <div class="input-field col s12">
                 <input id="name" type="text" name="plant[name]">
@@ -37,38 +59,38 @@
               <div class="col s3">
                 <h6 style="color:#00acc1;">Sunlight Needs</h6>
                 <p>
-                <input name="plant[sunlight][low]" type="radio" id="sunlight_low" />
+                <input name="sunlight" type="radio" id="sunlight_low" value="Low"/>
                 <label for="sunlight_low">Low</label>
               </p>
                 <p>
-                <input name="plant[sunlight][med]" type="radio" id="sunlight_med" />
+                <input name="sunlight" type="radio" id="sunlight_med" value="Medium"/>
                 <label for="sunlight_med">Medium</label>
               </p>
                 <p>
-                <input name="plant[sunlight][high]" type="radio" id="sunlight_high" />
+                <input name="sunlight" type="radio" id="sunlight_high" value="High"/>
                 <label for="sunlight_high">High</label>
               </p>
               </div>
               <div class="col s3">
                 <h6 style="color:#00acc1;">Soil Type</h6>
                 <p>
-                  <input name="soil" type="radio" id="soil-clay" />
+                  <input name="soil" type="radio" id="soil-clay" value="Clay"/>
                   <label for="soil-clay">Clay</label>
                 </p>
                 <p>
-                  <input name="soil" type="radio" id="soil-silt" />
+                  <input name="soil" type="radio" id="soil-silt" value="Silt"/>
                   <label for="soil-silt">Silt</label>
                 </p>
                 <p>
-                  <input name="soil" type="radio" id="soil-peaty" />
+                  <input name="soil" type="radio" id="soil-peaty" value="Peaty"/>
                   <label for="soil-peaty">Peaty</label>
                 </p>
                 <p>
-                  <input name="soil" type="radio" id="soil-loam" />
+                  <input name="soil" type="radio" id="soil-loam" value="Loam"/>
                   <label for="soil-loam">Loam</label>
                 </p>
                 <p>
-                  <input name="soil" type="radio" id="soil-chalky" />
+                  <input name="soil" type="radio" id="soil-chalky" value="Chalky"/>
                   <label for="soil-chalky">Chalky</label>
                 </p>
                 <!--<select>
@@ -88,19 +110,19 @@
               <div class="col s3">
                 <h6 style="color:#00acc1;">Container Size</h6>
                 <p>
-                  <input name="container" type="radio" id="container-xs" />
+                  <input name="container" type="radio" id="container-xs" value="Extra Small"/>
                   <label for="container-xs">Extra Small</label>
                 </p>
                 <p>
-                  <input name="container" type="radio" id="container-sm" />
+                  <input name="container" type="radio" id="container-sm" value="Small"/>
                   <label for="container-sm">Small</label>
                 </p>
                 <p>
-                  <input name="container" type="radio" id="container-med" />
+                  <input name="container" type="radio" id="container-med" value="Medium"/>
                   <label for="container-med">Medium</label>
                 </p>
                 <p>
-                  <input name="container" type="radio" id="container-lg" />
+                  <input name="container" type="radio" id="container-lg" value="Large"/>
                   <label for="container-lg">Large</label>
                 </p>
               </div>
@@ -108,19 +130,19 @@
               <div class="col s3">
                 <h6 style="color:#00acc1;">Soil Drainage Needs</h6>
                 <p>
-                  <input name="drainage" type="radio" id="drainage-low" />
+                  <input name="drainage" type="radio" id="drainage-low" value="Low" />
                   <label for="drainage-low">Low</label>
                 </p>
                 <p>
-                  <input name="drainage" type="radio" id="drainage-med" />
+                  <input name="drainage" type="radio" id="drainage-med" value="Medium"/>
                   <label for="drainage-med">Medium</label>
                 </p>
                 <p>
-                  <input name="drainage" type="radio" id="drainage-high" />
+                  <input name="drainage" type="radio" id="drainage-high" value="High"/>
                   <label for="drainage-high">High</label>
                 </p>
                 <p>
-                  <input name="drainage" type="radio" id="drainage-very-high" />
+                  <input name="drainage" type="radio" id="drainage-very-high" value="Very High"/>
                   <label for="drainage-very-high">Very High</label>
                 </p>
               </div>
@@ -143,52 +165,50 @@
           <div class="card-content">
             <h5 class="header center-align" style="color:#00acc1;">Keep Your Plant Up-to-date</h5>
             <h4 class="header center-align" style="color:#00acc1;">Add a Plant Status Event</h4>
-            <div class="input-field">
-            <select name="event">
+
+
+            <div class="input-field" id="plant_statuses_event" >
+            <select name="plant[statuses][event]" form="newplant">
               <option value="" disabled selected>Select an event</option>
-              <option value="watered">Watered</option>
-              <option value="pruned">Pruned</option>
-              <option value="moved-more-sun">Moved to More Sun</option>
-              <option value="moved-less-sun">Moved to Less Sun</option>
-              <option value="moved-less-sun">Repotted</option>
+              <option class="water_status" value="Watered" id="watered">Watered</option>
+              <option class="water_status" value="Pruned" id="pruned">Pruned</option>
+              <option class="water_status" value="Move to More Sun" id="moresun">Moved to More Sun</option>
+              <option class="water_status" value="Moved to Less Sun" id="lesssun">Moved to Less Sun</option>
+              <option class="water_status" value="Repotted" id="repotted">Repotted</option>
               </select>
-               <label>Event</label>
+               <label for="plant_statuses_event">Event</label>
             </div>
 
           <label for="status-date">Select the Event date</label>
-          <input type="text" class="datepicker" id="status-date" name="event_date">
+          <input type="text" class="datepicker" id="status-date" name="plant[statuses][event_date]" form="newplant">
 
               <div class="input-field">
-              <select name="leaf_status">
+              <select name="plant[statuses][leaf_status]" form="newplant">
                 <option value="" disabled selected>How's your plant looking?</option>
-                <option value="healthy">New Growth</option>
-                <option value="healthy">Healthy</option>
-                <option value="curling">Curling</option>
-                <option value="drooping">Drooping</option>
-                <option value="yellowing">Yellowing</option>
-                <option value="lspots">Light Spots</option>
-                <option value="dspots">Dark Spots</option>
-                <option value="dead">Dead Leaves</option>
+                <option value="New Growth">New Growth</option>
+                <option value="Healthy">Healthy</option>
+                <option value="Curling">Curling</option>
+                <option value="Drooping">Drooping</option>
+                <option value="Yellowing">Yellowing</option>
+                <option value="Light Spots">Light Spots</option>
+                <option value="Dark Spots">Dark Spots</option>
+                <option value="Dead Leaves">Dead Leaves</option>
                 </select>
                  <label>Leaf Status</label>
               </div>
 
               <div class="input-field">
-              <select name="soil_status">
+              <select name="plant[statuses][soil_status]" form="newplant">
                 <option value="" disabled selected>How's the soil feel?</option>
-                <option value="verydry">Extremely Dry</option>
-                <option value="dry">Dry</option>
-                <option value="damp">Damp</option>
-                <option value="soaked">Soaked</option>
-                <option value="mildew">Showing Mildew</option>
+                <option value="Extremely Dry">Extremely Dry</option>
+                <option value="Dry">Dry</option>
+                <option value="Damp">Damp</option>
+                <option value="Soaked">Soaked</option>
+                <option value="Showing Mildew">Showing Mildew</option>
                 </select>
                  <label>Soil Status</label>
               </div>
 
-          </div>
-          <div class="card-reveal">
-            <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-            <p>Here is some more information about this product that is only revealed once clicked on.</p>
           </div>
         </div>
       </div>
@@ -205,19 +225,19 @@
                <h4 class="header center-align" style="color:#00acc1; margin-top:50px;">Add care instructions</h4>
                <div class="row">
                  <div class="input-field col s4">
-                   <input id="water-amt" type="text" name="status[water_amt]">
+                   <input id="water-amt" type="text" name="plant[instructions][water_amt]">
                    <label for="water-amt">Water Amount</label>
                  </div>
                  <div class="input-field col s8">
-                 <select name="status[water_amt_unit]">
+                 <select name="plant[instructions][water_amt_unit]" form="newplant">
                    <option value="" disabled selected>Unit of Water</option>
-                   <option value="spritz">Spritz</option>
-                   <option value="tsp">Teaspoon(s)</option>
-                   <option value="tbsp" >Tablespoon(s)</option>
-                   <option value="cup">Cup(s)</option>
-                   <option value="pint" >Pint(s)</option>
-                   <option value="oz">Ounce(s)</option>
-                   <option value="quart">Quart(s)</option>
+                   <option value="Spritz">Spritz</option>
+                   <option value="Teaspoon(s)">Teaspoon(s)</option>
+                   <option value="Tablespoon(s)" >Tablespoon(s)</option>
+                   <option value="Cup(s)">Cup(s)</option>
+                   <option value="Pint(s)" >Pint(s)</option>
+                   <option value="Ounce(s)">Ounce(s)</option>
+                   <option value="Quart(s)">Quart(s)</option>
                    </select>
                     <label>Water Unit</label>
                  </div>
@@ -225,15 +245,15 @@
 
                <div class="row">
                  <div class="input-field col s4">
-                   <input id="water-freq" type="text" name="water_freq">
+                   <input id="water-freq" type="text" name="plant[instructions][water_freq]">
                    <label for="water-freq">Water Frequency</label>
                  </div>
                  <div class="input-field col s8">
-                 <select name="water_freq_unit">
+                 <select name="plant[instructions][water_freq_unit]" form="newplant">
                    <option value="" disabled selected>Frequency Unit</option>
-                   <option value="day">Day(s)</option>
-                   <option value="week">Week(s)</option>
-                   <option value="month" >Month(s)</option>
+                   <option value="Day(s)">Day(s)</option>
+                   <option value="Week(s)">Week(s)</option>
+                   <option value="Month(s)" >Month(s)</option>
                    </select>
                     <label>Frequency</label>
                  </div>
@@ -281,7 +301,13 @@ $(document).ready(function() {
     closeOnSelect: false // Close upon selecting a date,
   });
 
+
 });
+
+function getComboA(selectObject) {
+    var value = selectObject.value;
+}
+
 
 function changeSoilDescription() {
   var elem = document.getElementById('soil-description');
