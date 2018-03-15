@@ -74,6 +74,7 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/plants' do
+    binding.pry
     # t.string :event
     # t.date :event_date
     # t.string :soil_status
