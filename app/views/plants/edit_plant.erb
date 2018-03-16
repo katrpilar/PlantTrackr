@@ -1,0 +1,229 @@
+<nav>
+   <div class="nav-wrapper green darken-1">
+     <a href="/" class="brand-logo">PlantTrack</a>
+     <ul class="right hide-on-med-and-down">
+       <li><a href="/plants">Browse</a></li>
+       <li><a href="/my-plants">My Plants</a></li>
+       <li><a href="/plants/new">Create Plant</a></li>
+        <li><a href="/profile/edit">Edit Profile</a></li>
+       <li><a href="/logout" class="waves-effect waves-light btn blue-grey lighten-4">Logout</a></li>
+     </ul>
+   </div>
+ </nav>
+
+<section>
+  <div class="row">
+   <div class="col s8 offset-s2">
+      <!--<div class="card">
+       <div class="card-content">-->
+        <h4 class="header center-align" style="color:#00acc1; margin-top:50px;">Add a New Plant</h4>
+      <div class="row">
+          <form id="newplant" action="/plants/:id" class="col s12" method="POST">
+            <input id="hidden" type="hidden" name="_method" value="patch">
+          <div class="input-field" id="plant_statuses_event">
+          <select name="plant[statuses][event]">
+            <option value="" disabled selected>Select an event</option>
+            <option class="water_status" value="Watered" id="watered">Watered</option>
+            <option class="water_status" value="Pruned" id="pruned">Pruned</option>
+            <option class="water_status" value="Move to More Sun" id="moresun">Moved to More Sun</option>
+            <option class="water_status" value="Moved to Less Sun" id="lesssun">Moved to Less Sun</option>
+            <option class="water_status" value="Repotted" id="repotted">Repotted</option>
+            </select>
+             <label for="plant_statuses_event">Event</label>
+          </div>-->
+
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="name" type="text" name="plant[name]">
+                <label for="name">Plant Name</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="picture" type="text" name="plant[picture]">
+                <label for="picture">Photo Url</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col s3">
+                <h6 style="color:#00acc1;">Sunlight Needs</h6>
+                <p>
+                <input name="plant[sunlight]" type="radio" id="sunlight_low" value="Low"/>
+                <label for="sunlight_low">Low</label>
+              </p>
+                <p>
+                <input name="plant[sunlight]" type="radio" id="sunlight_med" value="Medium"/>
+                <label for="sunlight_med">Medium</label>
+              </p>
+                <p>
+                <input name="plant[sunlight]" type="radio" id="sunlight_high" value="High"/>
+                <label for="sunlight_high">High</label>
+              </p>
+              </div>
+              <div class="col s3">
+                <h6 style="color:#00acc1;">Soil Type</h6>
+                <p>
+                  <input name="plant[soil]" type="radio" id="soil-clay" value="Clay"/>
+                  <label for="soil-clay">Clay</label>
+                </p>
+                <p>
+                  <input name="plant[soil]" type="radio" id="soil-silt" value="Silt"/>
+                  <label for="soil-silt">Silt</label>
+                </p>
+                <p>
+                  <input name="plant[soil]" type="radio" id="soil-peaty" value="Peaty"/>
+                  <label for="soil-peaty">Peaty</label>
+                </p>
+                <p>
+                  <input name="plant[soil]" type="radio" id="soil-loam" value="Loam"/>
+                  <label for="soil-loam">Loam</label>
+                </p>
+                <p>
+                  <input name="plant[soil]" type="radio" id="soil-chalky" value="Chalky"/>
+                  <label for="soil-chalky">Chalky</label>
+                </p>
+              </div>
+
+              <div class="col s3">
+                <h6 style="color:#00acc1;">Container Size</h6>
+                <p>
+                  <input name="plant[container]" type="radio" id="container-xs" value="Extra Small"/>
+                  <label for="container-xs">Extra Small</label>
+                </p>
+                <p>
+                  <input name="plant[container]" type="radio" id="container-sm" value="Small"/>
+                  <label for="container-sm">Small</label>
+                </p>
+                <p>
+                  <input name="plant[container]" type="radio" id="container-med" value="Medium"/>
+                  <label for="container-med">Medium</label>
+                </p>
+                <p>
+                  <input name="plant[container]" type="radio" id="container-lg" value="Large"/>
+                  <label for="container-lg">Large</label>
+                </p>
+              </div>
+
+              <div class="col s3">
+                <h6 style="color:#00acc1;">Soil Drainage Needs</h6>
+                <p>
+                  <input name="plant[drainage]" type="radio" id="drainage-low" value="Low" />
+                  <label for="drainage-low">Low</label>
+                </p>
+                <p>
+                  <input name="plant[drainage]" type="radio" id="drainage-med" value="Medium"/>
+                  <label for="drainage-med">Medium</label>
+                </p>
+                <p>
+                  <input name="plant[drainage]" type="radio" id="drainage-high" value="High"/>
+                  <label for="drainage-high">High</label>
+                </p>
+                <p>
+                  <input name="plant[drainage]" type="radio" id="drainage-very-high" value="Very High"/>
+                  <label for="drainage-very-high">Very High</label>
+                </p>
+              </div>
+            </div>
+            </div>
+            </div>
+            </div>
+      </section>
+
+<section>
+        <div class="row">
+         <div class="col s8 offset-s2">
+           <!--<h2 class="header center-align" style="color:white;">Add Care Instructions</h2>
+            <div class="card" style="margin-top:50px;">
+             <div class="card-content">-->
+               <h4 class="header center-align" style="color:#00acc1; margin-top:50px;">Add care instructions</h4>
+               <div class="row">
+                 <div class="input-field col s4">
+                   <input id="water-amt" type="text" name="plant[instructions][water_amt]">
+                   <label for="water-amt">Water Amount</label>
+                 </div>
+                 <div class="input-field col s8">
+                 <select name="plant[instructions][water_amt_unit]" form="newplant">
+                   <option value="" disabled selected>Unit of Water</option>
+                   <option value="Spritz">Spritz</option>
+                   <option value="Teaspoon(s)">Teaspoon(s)</option>
+                   <option value="Tablespoon(s)" >Tablespoon(s)</option>
+                   <option value="Cup(s)">Cup(s)</option>
+                   <option value="Pint(s)" >Pint(s)</option>
+                   <option value="Ounce(s)">Ounce(s)</option>
+                   <option value="Quart(s)">Quart(s)</option>
+                   </select>
+                    <label>Water Unit</label>
+                 </div>
+               </div>
+
+               <div class="row">
+                 <div class="input-field col s4">
+                   <input id="water-freq" type="text" name="plant[instructions][water_freq]">
+                   <label for="water-freq">Water Frequency</label>
+                 </div>
+                 <div class="input-field col s8">
+                 <select name="plant[instructions][water_freq_unit]" form="newplant">
+                   <option value="" disabled selected>Frequency Unit</option>
+                   <option value="Day(s)">Day(s)</option>
+                   <option value="Week(s)">Week(s)</option>
+                   <option value="Month(s)" >Month(s)</option>
+                   </select>
+                    <label>Frequency</label>
+                 </div>
+               </div>
+             </div>
+     </div>
+   <!--</div>
+  </div>-->
+</section>
+
+<form action="/plants/<%=@plant.id%>/delete" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <button type="submit" value="Delete Tweet" name="Delete Tweet">Delete Tweet</button>
+</form>
+
+      <div class="row" style="height:200px;">
+        <div class="input-field col offset-s5" style="margin-top:5S0px;">
+          <button class="btn-large waves-effect waves-light deep-orange lighten-1" type="submit" name="action">Submit
+              <i class="material-icons right">add</i>
+          </button>
+
+          <!--<input type="submit" value="submit" class="waves-effect waves-light btn-large deep-orange lighten-1" name="submit"></input>-->
+        </div>
+      </div>
+    </form>
+
+
+<!--
+<ul class="pagination">
+    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+    <li class="active"><a href="/plants/new">1</a></li>
+    <li class="waves-effect"><a href="#instructions">2</a></li>
+    <li class="waves-effect"><a href="/statuses">3</a></li>
+    <li class="waves-effect"><a href="/plants">4</a></li>
+    <li class="waves-effect"><a href="/instructions" class="waves-effect waves-light btn blue-grey lighten-3">Next</a></li>
+  </ul>-->
+
+<script>
+$(document).ready(function() {
+  $('select').material_select();
+  $('.tooltipped').tooltip({delay: 50});
+  $('.parallax').parallax();
+  $('.carousel').carousel();
+  $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15, // Creates a dropdown of 15 years to control year,
+    today: 'Today',
+    clear: 'Clear',
+    close: 'Ok',
+    closeOnSelect: false // Close upon selecting a date,
+  });
+
+
+});
+
+function getComboA(selectObject) {
+    var value = selectObject.value;
+}
+</script>
