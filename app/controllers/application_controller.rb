@@ -109,5 +109,10 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  get '/profile/edit' do
+    @user = User.find_by_id(session[:user_id])
+    erb :'/users/edit_user'
+  end
+
 
 end
