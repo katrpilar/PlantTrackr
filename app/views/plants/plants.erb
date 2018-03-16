@@ -30,6 +30,19 @@
 
 }
 </style>
+<nav>
+   <div class="nav-wrapper green darken-1">
+     <a href="/" class="brand-logo">PlantTrack</a>
+     <ul class="right hide-on-med-and-down">
+       <li class="active"><a href="/plants">Browse</a></li>
+       <li><a href="/my-plants">My Plants</a></li>
+       <li><a href="/plants/new">Create Plant</a></li>
+        <li><a href="/users/<%=session[:user_id]%>/edit">Edit Profile</a></li>
+       <li><a href="/logout" class="waves-effect waves-light btn blue-grey lighten-4">Logout</a></li>
+     </ul>
+   </div>
+ </nav>
+
 <div class="preloader hero" id="overlay">
 <div class="preloader-wrapper big active centered">
       <div class="spinner-layer spinner-blue" style="z-index:3000;">
@@ -44,8 +57,19 @@
     </div>
   </div>
 
+  <div class="row">
+   <div class="col s8 offset-s2">
+      <!--<div class="card">
+       <div class="card-content">-->
+        <h4 class="header center-align" style="color:#00acc1; margin-top:50px;">Welcome, <%=@user.username%></h4>
+      </div>
+    </div>
 
-<h5><%=@user.username%></h5>
+
+<!--<div class="avatar">
+  <i class="large material-icons circle green darken-1">person</i>
+  <span class="title"></span>
+</div>-->
 
 <div class="row">
   <div class="input-field col s8 offset-s2">
