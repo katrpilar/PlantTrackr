@@ -74,10 +74,6 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/plants' do
-    # t.string :event
-    # t.date :event_date
-    # t.string :soil_status
-    # t.string :leaf_status
     if params[:name] != ""
       @plant = Plant.create(name: params[:plant][:name], picture: params[:plant][:picture], sunlight: params[:plant][:sunlight], soil: params[:plant][:soil], container_size: params[:plant][:container], drainage: params[:plant][:drainage])
       @plant.user = User.find_by_id(session[:user_id])
@@ -114,10 +110,20 @@ class ApplicationController < Sinatra::Base
     end
   end
 
-  get '/profile/edit' do
-    @user = User.find_by_id(session[:user_id])
-    erb :'/users/edit_user'
-  end
+  # get '/profile/edit' do
+  #   @user = User.find_by_id(session[:user_id])
+  #   erb :'/users/edit_user'
+  # end
 
+  patch '/plants/:id' do
+      @plant = Plant.update(name: params[:plant][:name], picture: params[:plant][:picture], sunlight: params[:plant][:sunlight], soil: params[:plant][:soil], container_size: params[:plant][:container], drainage: params[:plant][:drainage])
+      @plant.save
+      # Need to ensure that instructions and status tables have timestamps
+      # @plant.instructions =
+      @instruction = Instruction.create(water_amt: params[:plant][:instructions][:water_amt], water_amt_unit: params[:plant][:instructions][:water_amt_unit], water_freq: params[:plant][:instructions][:water_freq], water_freq_unit: params[:plant][:instructions][:water_freq_unit])
+      @instruction.plant = @plant
+      @instruction.save
+      redirect to :"/plants/#{@plant.id}"
+  end
 
 end
