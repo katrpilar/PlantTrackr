@@ -29,6 +29,7 @@
   /* bring your own prefixes transform: translate(-50%, -50%);*/
 
 }
+
 </style>
 <nav>
    <div class="nav-wrapper green darken-1">
@@ -56,13 +57,31 @@
     </div>
   </div>
 
-  <div class="row">
-   <div class="col s8 offset-s2">
+
+<div class="parallax-container" style="height:400px;">
+  <div class="parallax" style="background-color:#00acc1;"><img src="https://images.pexels.com/photos/631909/pexels-photo-631909.jpeg?w=1260&h=750&dpr=3&auto=compress&cs=tinysrgb" style="opacity: 0.1;"></div>
+
+  <!--<div class="row" style="height:200px;">
+   <div class="col s2 offset-s5" style="background-color:#f5f5f5;">
+     <div class="row">-->
       <!--<div class="card">
        <div class="card-content">-->
-        <h4 class="header center-align" style="color:#00acc1; margin-top:50px;">Welcome, <%=@user.username%></h4>
-      </div>
-    </div>
+        <h2 class="header center-align" style="color:#ffffff; margin-top:1.25em;">Welcome, <%=@user.username%></h2>
+        <hr style="border-color:#ffffff; width:40%;">
+        <h5 class="header center-align" style="color:#ffffff;">Browse all community plants and duplicate one <br><b> OR </b><br> Create a new plant</h5>
+        <hr style="border-color:#ffffff; width:40%;">
+        <br>
+          <p class="center-align">
+            <a href="/plants/new"><button class="btn-large waves-effect waves-light deep-orange lighten-1">Create Plant
+                <i class="material-icons right">add</i>
+            </button></a>
+          </p>
+
+            <!--<input type="submit" value="submit" class="waves-effect waves-light btn-large deep-orange lighten-1" name="submit"></input>-->
+    <!--</div>
+  </div>-->
+
+</div>
 
 
 <!--<div class="avatar">
@@ -92,7 +111,7 @@
       <!--<div class="carousel">-->
       <div class="row container">
       <%@plants.each do |plant|%>
-          <div class="col s6">
+          <div class="col s12 m6">
             <!--<div class="carousel-item">-->
               <div class="card large">
                 <div class="fixed-action-btn toolbar">
@@ -138,14 +157,22 @@
 
 <script>
 
-$(document).ready(function(){
-     $('.carousel').carousel({
-           dist:0,
-           shift:0,
-           padding:20,
+$(document).ready(function() {
+  $('select').material_select();
+  $('.tooltipped').tooltip({delay: 50});
+  $('.parallax').parallax();
+  $('.carousel').carousel();
+  $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15, // Creates a dropdown of 15 years to control year,
+    today: 'Today',
+    clear: 'Clear',
+    close: 'Ok',
+    closeOnSelect: false // Close upon selecting a date,
+  });
 
-     });
-   });
+
+});
 
    $(window).on('load', function() {
             $('.preloader').delay(600).fadeOut('slow');
