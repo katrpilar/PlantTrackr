@@ -5,7 +5,45 @@
   right: 5px !important;
   top: 5px !important;
   }
+
+  #overlay {
+    position: fixed; /* Sit on top of the page content */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #43A047; /* Black background with opacity */
+    z-index: 2000; /* Specify a stack order in case you're using a different order for other elements */
+}
+
+.spinner-layer {
+        border-color: white !important;
+    }
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes transform: translate(-50%, -50%);*/
+
+}
 </style>
+<div class="preloader hero" id="overlay">
+<div class="preloader-wrapper big active centered">
+      <div class="spinner-layer spinner-blue" style="z-index:3000;">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 <h5><%=@user.username%></h5>
 
@@ -42,7 +80,7 @@
                       <li class="waves-effect waves-light"><a href="#!"><i class="material-icons">fullscreen</i></a></li>
                       <li class="waves-effect waves-light"><a href="#!"><i class="material-icons">edit</i></a></li>
                       <li class="waves-effect waves-light"><a href="#!"><i class="material-icons">content_copy</i></a></li>
-                      <li class="waves-effect waves-light"><a href="#" onclick="$(this).closest('form').submit()"><i class="material-icons">delete_forever</i></a></li>
+                      <li class="waves-effect waves-light"><a href="#" onclick="document.getElementById('deleteplant').submit();"><i class="material-icons">delete_forever</i></a></li>
                     </ul>
                   </div>
                 <div class="card-image waves-effect waves-block waves-light">
@@ -54,7 +92,7 @@
 
                 <div class="card-content">
                   <span class="card-title activator grey-text text-darken-4"><h5 style="color:#00acc1;"><%=plant.name%></h5><i class="material-icons right">more_vert</i></span>
-                  <p><a href="#">Edit Plant</a></p>
+                  <p><a href="/users/<%=plant.user_id%>">Submitted By: <%=User.find_by_id(plant.user_id).username%></a></p>
                 </div>
                 <div class="card-reveal">
                   <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
@@ -65,16 +103,18 @@
 
             <form id="deleteplant" action="/plants/<%=plant.id%>/delete" method="post" style="display:none !important;">
               <input id="hidden" type="hidden" name="_method" value="delete">
-              <input type="submit" value="Delete Tweet" id="delete">
+              <input type="submit" value="Delete Plant" id="delete">
             </form>
           </div>
 
       <%end%>
       </div>
+
       <!--</div>-->
   <!--</div>-->
 
 <script>
+
 $(document).ready(function(){
      $('.carousel').carousel({
            dist:0,
@@ -83,4 +123,9 @@ $(document).ready(function(){
 
      });
    });
+
+   $(window).on('load', function() {
+            $('.preloader').delay(600).fadeOut('slow');
+            $('.preloader-wrapper').delay(500).fadeOut();
+        });
    </script>
