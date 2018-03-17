@@ -92,6 +92,8 @@ class ApplicationController < Sinatra::Base
 
   get '/plants/:id' do
     @plant = Plant.find_by_id(params[:id])
+    # binding.pry
+    @all_statuses = @plant.statuses
     erb :'/plants/show_plant'
   end
 

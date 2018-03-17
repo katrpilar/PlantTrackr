@@ -1,0 +1,238 @@
+<style>
+.fixed-action-btn {
+  float: right !important;
+  position: absolute !important;
+  right: 5px !important;
+  top: 5px !important;
+  }
+
+  #overlay {
+    position: fixed; /* Sit on top of the page content */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #43A047; /* Black background with opacity */
+    z-index: 2000; /* Specify a stack order in case you're using a different order for other elements */
+}
+
+.spinner-layer {
+        border-color: white !important;
+    }
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes transform: translate(-50%, -50%);*/
+
+}
+.material-icons {
+    vertical-align: middle;
+}
+</style>
+<nav>
+   <div class="nav-wrapper green darken-1">
+     <a href="/" class="brand-logo">PlantTrack</a>
+     <ul class="right hide-on-med-and-down">
+       <li><a href="/plants">Browse</a></li>
+       <li><a href="/my-plants">My Plants</a></li>
+       <li><a href="/plants/new">Create Plant</a></li>
+       <li><a href="/logout" class="waves-effect waves-light btn green darken-1">Logout</a></li>
+     </ul>
+   </div>
+ </nav>
+
+<div class="preloader hero" id="overlay">
+<div class="preloader-wrapper big active centered">
+      <div class="spinner-layer spinner-blue" style="z-index:3000;">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<section class="container">
+<div class="row">
+    <div class="col s12 m4 offset-m4">
+      <img class="circle responsive-img" src="<%=@plant.picture%>" style="margin-top:50px;"><h4 class="header center-align" style="color:#00acc1; margin-top:25px;"><%=@plant.name%></h4>
+    </div>
+  </div>
+</section>
+
+<%if session[:user_id] == @plant.user_id%>
+    <section style="margin-top:80px;">
+      <div class="row">
+       <div class="col s8 offset-s2">
+        <form id="newplant" action="/<%=@plant.id%>/statuses" class="col s12" method="POST">
+          <div class="card">
+           <div class="card-content">
+             <h5 class="header center-align" style="color:#00acc1;">Keep Your Plant Up-to-date</h5>
+             <h4 class="header center-align" style="color:#00acc1;">Add a Plant Status Event</h4>
+
+
+             <div class="input-field" id="plant_statuses_event" >
+             <select name="plant[statuses][event]" form="newplant">
+               <option value="" disabled selected>Select an event</option>
+               <option class="water_status" value="Watered" id="watered">Watered</option>
+               <option class="water_status" value="Pruned" id="pruned">Pruned</option>
+               <option class="water_status" value="Move to More Sun" id="moresun">Moved to More Sun</option>
+               <option class="water_status" value="Moved to Less Sun" id="lesssun">Moved to Less Sun</option>
+               <option class="water_status" value="Repotted" id="repotted">Repotted</option>
+               </select>
+                <label for="plant_statuses_event">Event</label>
+             </div>
+
+           <label for="status-date">Select the Event date</label>
+           <input type="text" class="datepicker" id="status-date" name="plant[statuses][event_date]" form="newplant">
+
+               <div class="input-field">
+               <select name="plant[statuses][leaf_status]" form="newplant">
+                 <option value="" disabled selected>How's your plant looking?</option>
+                 <option value="New Growth">New Growth</option>
+                 <option value="Healthy">Healthy</option>
+                 <option value="Curling">Curling</option>
+                 <option value="Drooping">Drooping</option>
+                 <option value="Yellowing">Yellowing</option>
+                 <option value="Light Spots">Light Spots</option>
+                 <option value="Dark Spots">Dark Spots</option>
+                 <option value="Dead Leaves">Dead Leaves</option>
+                 </select>
+                  <label>Leaf Status</label>
+               </div>
+
+               <div class="input-field">
+               <select name="plant[statuses][soil_status]" form="newplant">
+                 <option value="" disabled selected>How's the soil feel?</option>
+                 <option value="Extremely Dry">Extremely Dry</option>
+                 <option value="Dry">Dry</option>
+                 <option value="Damp">Damp</option>
+                 <option value="Soaked">Soaked</option>
+                 <option value="Showing Mildew">Showing Mildew</option>
+                 </select>
+                  <label>Soil Status</label>
+               </div>
+
+           </div>
+         </div>
+       </div>
+     </div>
+
+       <div class="row" style="height:200px;">
+         <div class="input-field col offset-s5" style="margin-top:5S0px;">
+           <button class="btn-large waves-effect waves-light deep-orange lighten-1" type="submit" name="action">Submit
+               <i class="material-icons right">add</i>
+           </button>
+
+           <!--<input type="submit" value="submit" class="waves-effect waves-light btn-large deep-orange lighten-1" name="submit"></input>-->
+         </div>
+       </div>
+     </form>
+    </section>
+
+<%end%>
+
+
+<section class="container">
+<div class="row">
+    <ul class="collection">
+    <% @all_statuses.each do |stat|%>
+      <%statevent = stat.event%>
+
+      <%case statevent
+        when "Watered"%>
+          <%staticon = "<i class='fa fa-tint circle' ></i>"%>
+        <%when "Pruned"%>
+        <%when "Moved to More Sun"%>
+          <%staticon = "<i class='material-icons'>wb_sunny</i>"%>
+        <%when "Moved to Less Sun"%>
+          <%staticon = "<i class='material-icons'>wb_cloudy</i>"%>
+        <%when "Repotted"%>
+          <%staticon = "<i class='fa fa-archive'></i>"%>
+      <%else%>
+      <%end%>
+      <li class="collection-item avatar">
+        <%= staticon%>
+        <span class="title">Title</span>
+        <p>First Line <br>
+           Second Line
+        </p>
+        <a href="#!" class="secondary-content"><i class="material-icons">delete</i></a>
+      </li>
+
+    <%end%>
+    </ul>
+  </div>
+</section>
+
+<!--  <div class="row container">
+      <div class="col s12 m12">
+        <div class="card large">
+
+          <div class="card-content">
+            <span class="card-title grey-text text-darken-4"><h5><%=@plant.name%></h5></span>
+            <p>Created By: <%=User.find_by_id(@plant.user_id).username%></p>
+          </div>
+          <div class="card-action">
+            <%plantid = @plant.id%>
+            <a href="#" class="teal-text text-lighten-1"><%=Instruction.find_by_id(plantid)[:water_amt]%> <%=Instruction.find_by_id(plantid)[:water_amt_unit]%> of water every <%=Instruction.find_by_id(plantid)[:water_freq]%> <%=Instruction.find_by_id(plantid)[:water_freq_unit]%></a>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title"><i class="material-icons activator">close</i></span><br><br>
+            <span class="card-title grey-text text-darken-4 center-align"><%=@plant.name%></span>
+            <div class="col s12 m12">
+              <ul class="collection" style="border:none;">
+                <li class="collection-item" >
+                  <h6><%=@plant.soil%> Soil <i class="material-icons secondary-content" style="vertical-align:middle;">landscape</i></h6>
+                </li>
+                <li class="collection-item" >
+                  <h6><%=@plant.sunlight%> Sunlight<i class="material-icons secondary-content">wb_sunny</i></h6>
+                </li>
+                <li class="collection-item" >
+                  <h6><%=@plant.container_size%> Container<i class="fa fa-archive secondary-content"></i></h6>
+                </li>
+                <li class="collection-item" >
+                  <h6><%=@plant.drainage%> Drainage<i class="fa fa-shower fa-lg secondary-content"></i></h6>
+                </li>
+              </ul>
+          </div>
+          </div>
+        </div>-->
+
+      <form id="deleteplant" action="/plants/<%=@plant.id%>/delete" method="post">
+        <input id="hidden" type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete Plant" id="delete">
+      </form>
+</div>
+
+<script>
+
+$(document).ready(function() {
+  $('select').material_select();
+  $('.tooltipped').tooltip({delay: 50});
+  $('.parallax').parallax();
+  $('.carousel').carousel();
+  $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15, // Creates a dropdown of 15 years to control year,
+    today: 'Today',
+    clear: 'Clear',
+    close: 'Ok',
+    closeOnSelect: false // Close upon selecting a date,
+  });
+
+
+});
+
+   $(window).on('load', function() {
+            $('.preloader').delay(600).fadeOut('slow');
+            $('.preloader-wrapper').delay(500).fadeOut();
+        });
+   </script>
