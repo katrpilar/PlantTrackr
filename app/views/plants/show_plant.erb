@@ -120,20 +120,16 @@
                   <label>Soil Status</label>
                </div>
 
+                   <button class="btn-large waves-effect waves-light deep-orange lighten-1" type="submit" name="action">Submit
+                       <i class="material-icons right">add</i>
+                   </button>
+
+                   <!--<input type="submit" value="submit" class="waves-effect waves-light btn-large deep-orange lighten-1" name="submit"></input>-->
            </div>
          </div>
        </div>
      </div>
 
-       <div class="row" style="height:200px;">
-         <div class="input-field col offset-s5" style="margin-top:5S0px;">
-           <button class="btn-large waves-effect waves-light deep-orange lighten-1" type="submit" name="action">Submit
-               <i class="material-icons right">add</i>
-           </button>
-
-           <!--<input type="submit" value="submit" class="waves-effect waves-light btn-large deep-orange lighten-1" name="submit"></input>-->
-         </div>
-       </div>
      </form>
     </section>
 
@@ -219,6 +215,7 @@ $(document).ready(function() {
   $('.tooltipped').tooltip({delay: 50});
   $('.parallax').parallax();
   $('.carousel').carousel();
+  $('.modal').modal();
   $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
     selectYears: 15, // Creates a dropdown of 15 years to control year,
