@@ -121,7 +121,7 @@
                       <i class="large material-icons">mode_edit</i>
                     </a>
                     <ul>
-                      <li class="waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="View Page"><a href="#!"><i class="material-icons">fullscreen</i></a></li>
+                      <li class="waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="View Page"><a href="/plants/<%=plant.id%>"><i class="material-icons">fullscreen</i></a></li>
                       <li class="waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"><a href="#!"><i class="material-icons">edit</i></a></li>
                       <li class="waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Copy"><a href="#!"><i class="material-icons">content_copy</i></a></li>
                       <li class="waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Delete"><a href="#" onclick="document.getElementById('deleteplant').submit();"><i class="material-icons">delete_forever</i></a></li>
@@ -143,7 +143,8 @@
                   <a href="#" class="teal-text text-lighten-1"><%=Instruction.find_by_id(plantid)[:water_amt]%> <%=Instruction.find_by_id(plantid)[:water_amt_unit]%> of water every <%=Instruction.find_by_id(plantid)[:water_freq]%> <%=Instruction.find_by_id(plantid)[:water_freq_unit]%></a>
                 </div>
                 <div class="card-reveal">
-                  <span class="card-title grey-text text-darken-4"><i class="material-icons">close</i><%=plant.name%></span>
+                  <span class="card-title"><i class="material-icons activator">close</i></span><br><br>
+                  <span class="card-title grey-text text-darken-4 center-align"><%=plant.name%></span>
                   <div class="col s12 m12">
                     <ul class="collection" style="border:none;">
                       <li class="collection-item" >
