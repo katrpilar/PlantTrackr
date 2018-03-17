@@ -29,7 +29,9 @@
   /* bring your own prefixes transform: translate(-50%, -50%);*/
 
 }
-
+.material-icons {
+    vertical-align: middle;
+}
 </style>
 <nav>
    <div class="nav-wrapper green darken-1">
@@ -58,7 +60,7 @@
   </div>
 
 
-<div class="parallax-container" style="height:400px;">
+<div class="parallax-container" style="height:450px;">
   <div class="parallax" style="background-color:#00acc1;"><img src="https://images.pexels.com/photos/631909/pexels-photo-631909.jpeg?w=1260&h=750&dpr=3&auto=compress&cs=tinysrgb" style="opacity: 0.1;"></div>
 
   <!--<div class="row" style="height:200px;">
@@ -113,9 +115,9 @@
       <%@plants.each do |plant|%>
           <div class="col s12 m6">
             <!--<div class="carousel-item">-->
-              <div class="card large">
+              <div class="card large sticky-action">
                 <div class="fixed-action-btn toolbar">
-                    <a class="btn-floating btn-sm green darken-1">
+                    <a class="btn-floating btn-sm deep-orange lighten-1">
                       <i class="large material-icons">mode_edit</i>
                     </a>
                     <ul>
@@ -133,12 +135,31 @@
                 </div>
 
                 <div class="card-content">
-                  <span class="card-title activator grey-text text-darken-4"><h5 style="color:#00acc1;"><%=plant.name%></h5><i class="material-icons right">more_vert</i></span>
-                  <p><a href="/users/<%=plant.user_id%>">Submitted By: <%=User.find_by_id(plant.user_id).username%></a></p>
+                  <span class="card-title activator grey-text text-darken-4"><h5><%=plant.name%></h5><i class="material-icons right cyan-text text-darken-1">expand_more</i></span>
+                  <p>Created By: <%=User.find_by_id(plant.user_id).username%></p>
+                </div>
+                <div class="card-action">
+                  <%plantid = plant.id%><!--deep-orange-text text-lighten-1-->
+                  <a href="#" class="teal-text text-lighten-1"><%=Instruction.find_by_id(plantid)[:water_amt]%> <%=Instruction.find_by_id(plantid)[:water_amt_unit]%> of water every <%=Instruction.find_by_id(plantid)[:water_freq]%> <%=Instruction.find_by_id(plantid)[:water_freq_unit]%></a>
                 </div>
                 <div class="card-reveal">
-                  <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                  <p><i class="fa fa-tint fa-2x"></i>Water</p>
+                  <span class="card-title grey-text text-darken-4"><i class="material-icons">close</i><%=plant.name%></span>
+                  <div class="col s12 m12">
+                    <ul class="collection" style="border:none;">
+                      <li class="collection-item" >
+                        <h6><%=plant.soil%> Soil <i class="material-icons secondary-content" style="vertical-align:middle;">landscape</i></h6>
+                      </li>
+                      <li class="collection-item" >
+                        <h6><%=plant.sunlight%> Sunlight<i class="material-icons secondary-content">wb_sunny</i></h6>
+                      </li>
+                      <li class="collection-item" >
+                        <h6><%=plant.container_size%> Container<i class="fa fa-archive secondary-content"></i></h6>
+                      </li>
+                      <li class="collection-item" >
+                        <h6><%=plant.drainage%> Drainage<i class="fa fa-shower fa-lg secondary-content"></i></h6>
+                      </li>
+                    </ul>
+                </div>
                 </div>
               </div>
             <!--</div>-->
