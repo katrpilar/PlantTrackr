@@ -143,8 +143,8 @@
           <%staticon = "<i class='fa fa-tint circle' ></i>"%>
         <%when "Pruned"
           staticon = "<i class='material-icons circle'>content_cut</i>"%>
-        <%when "Moved to More Sun"
-          staticon = "<i class='fa fa-sun-o circle'></i>"%>
+        <%when "Move to More Sun"
+          staticon = "<i class='material-icons circle'>wb_sunny</i>"%>
         <%when "Moved to Less Sun"
           staticon = "<i class='material-icons circle'>wb_cloudy</i>"%>
         <%when "Repotted"
@@ -156,13 +156,20 @@
         <p><i><%=stat.event_date%></i></p>
         <p>Soil: <%=stat.soil_status%></p>
         <p>Foliage: <%=stat.leaf_status%></p>
-        <a href="#!" class="secondary-content"><i class="material-icons">delete</i></a>
+        <a href="#" class="secondary-content"><i class="material-icons" onclick="document.getElementById('deletestatus').submit();">delete</i></a>
       </li>
+
+      <form id="deletestatus" action="/plants/statuses/<%=stat.id%>/delete" method="post" style="display:none !important;">
+        <input id="hidden" type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete" id="delete">
+      </form>
 
     <%end%>
     </ul>
   </div>
 </section>
+
+
 
 <!--  <div class="row container">
       <div class="col s12 m12">

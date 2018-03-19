@@ -146,4 +146,16 @@ class ApplicationController < Sinatra::Base
     redirect to :"/plants/#{@plant.id}"
   end
 
+
+  delete '/plants/statuses/:stat_id/delete' do
+    @status = Status.find_by_id(params[:stat_id])
+    @plant = Plant.find_by_id(@status.plant_id)
+    if session[:user_id] == @plant.user_id
+      @status.delete
+      redirect to :"/plants/#{@plant.id}"
+    else
+      redirect to :'/plants'
+    end
+  end
+
 end
