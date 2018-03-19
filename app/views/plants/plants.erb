@@ -47,7 +47,7 @@
        <li class="active"><a href="/plants">Browse</a></li>
        <li><a href="/my-plants">My Plants</a></li>
        <li><a href="/plants/new">Create Plant</a></li>
-       <li><a href="/logout" class="waves-effect waves-light btn green darken-1">Logout</a></li>
+       <li><a href="/logout" class="waves-effect waves-light btn light-green darken-4">Logout</a></li>
      </ul>
    </div>
  </nav>
@@ -66,16 +66,8 @@
     </div>
   </div>
 
-
 <div class="parallax-container" style="height:450px;">
-  <!--background-color:#00acc1;-->
   <div class="parallax" style="background-color:#000000;"><img src="https://images.pexels.com/photos/631909/pexels-photo-631909.jpeg?w=1260&h=750&dpr=3&auto=compress&cs=tinysrgb" style="opacity: 0.7; filter:blur(5px);"></div>
-
-  <!--<div class="row" style="height:200px;">
-   <div class="col s2 offset-s5" style="background-color:#f5f5f5;">
-     <div class="row">-->
-      <!--<div class="card">
-       <div class="card-content">-->
         <h2 class="header center-align" style="color:#ffffff; margin-top:1.25em;">Welcome, <%=@user.username%></h2>
         <hr style="border-color:#ffffff; width:40%;"><br>
         <h5 class="header center-align" style="color:#ffffff;">Browse all community plants and click <i class="material-icons">content_copy</i> to add it to your greenhouse.</h5>
@@ -86,43 +78,11 @@
                 <i class="material-icons right">add</i>
             </button></a>
           </p>
-
-            <!--<input type="submit" value="submit" class="waves-effect waves-light btn-large deep-orange lighten-1" name="submit"></input>-->
-    <!--</div>
-  </div>-->
-
 </div>
 
-
-<!--<div class="avatar">
-  <i class="large material-icons circle green darken-1">person</i>
-  <span class="title"></span>
-</div>-->
-
-<div class="row">
-  <div class="input-field col s8 offset-s2">
-    <!--<div class="input-field col s6">
-      <div class="card large">
-        <div class="card-image waves-effect waves-block waves-light green lighten-1">
-          <h5 class="center-align"><i class="large material-icons" style="color:#e8f5e9;">add_to_photos</i></h5>
-        </div>
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-          <p><a href="#">Edit Plant</a></p>
-        </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-          <p>Here is some more information about this product that is only revealed once clicked on.</p>
-        </div>
-      </div>-->
-
-    </div></div>
-      <!--<div class="input-field col s6">-->
-      <!--<div class="carousel">-->
       <div class="row container">
       <%@plants.each do |plant|%>
           <div class="col s12 m6">
-            <!--<div class="carousel-item">-->
               <div class="card large sticky-action">
                 <%if session[:user_id] == plant.user_id%>
                   <div class="fixed-action-btn toolbar">
@@ -131,37 +91,35 @@
                       </a>
                       <ul>
                         <li class="waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Journal"><a href="/plants/<%=plant.id%>"><i class="material-icons">event_note</i></a></li>
-                        <li class="waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Update"><a href="/plants/<%=plant.id%>"><i class="material-icons">playlist_add</i></a></li>
-                        <li class="waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"><a href="#!"><i class="material-icons">edit</i></a></li>
+                        <li class="waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Update"><a class="modal-trigger" data-target="statusmodal"><i class="material-icons">playlist_add</i></a></li>
+                        <li class="waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"><a href="/plants/<%=plant.id%>/edit"><i class="material-icons">edit</i></a></li>
                         <li class="waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Copy"><a href="#!"><i class="material-icons">content_copy</i></a></li>
                           <li class="waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Delete"><a href="#" onclick="document.getElementById('deleteplant').submit();"><i class="material-icons">delete_forever</i></a></li>
                       </ul>
-                    </div>
-
-                  <%else%>
-                  <div class="fixed-action-btn" style="padding-top:0px !important;">
-                      <a class="btn-floating btn-sm deep-orange lighten-1">
-                        <i class="large material-icons">content_copy</i>
-                      </a>
-                      <a class="fixed-action-btn-2 btn-floating btn-sm deep-orange lighten-1" style="padding-top:0px !important;">
-                        <i class="large material-icons">favorite_border</i>
-                      </a>
                     </div>
                   <%end%>
                 <div class="card-image waves-effect waves-block waves-light">
                   <img class="activator" src="<%=plant.picture%>">
 
-                  <!--<a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">edit</i></a>
--->
+
                 </div>
 
                 <div class="card-content">
-                  <span class="card-title activator grey-text text-darken-4"><h5><%=plant.name%></h5><i class="material-icons right cyan-text text-darken-1">expand_more</i></span>
+                  <span class="card-title activator grey-text text-darken-4"><h5><%=plant.name%><i class="small material-icons right">expand_more</i></h5></span>
                   <p>Created By: <%=User.find_by_id(plant.user_id).username%></p>
                 </div>
                 <div class="card-action">
                   <%plantid = plant.id%><!--deep-orange-text text-lighten-1-->
-                  <a href="#" class="teal-text text-lighten-1"><%=Instruction.find_by_id(plantid)[:water_amt]%> <%=Instruction.find_by_id(plantid)[:water_amt_unit]%> of water every <%=Instruction.find_by_id(plantid)[:water_freq]%> <%=Instruction.find_by_id(plantid)[:water_freq_unit]%></a>
+                  <div class="row" style="margin-bottom:0px !important;">
+                    <div class="col s8">
+                    <a href="#" class=" teal-text text-lighten-1"><%=Instruction.find_by_id(plantid)[:water_amt]%> <%=Instruction.find_by_id(plantid)[:water_amt_unit]%> of water every <%=Instruction.find_by_id(plantid)[:water_freq]%> <%=Instruction.find_by_id(plantid)[:water_freq_unit]%></a>
+                    </div>
+                    <div class="col s4 right-align">
+                      <a href="#"><i class="material-icons right-align">share</i></a>
+                      <a href="#"><i class="material-icons right-align">content_copy</i></a>
+                      <a href="#"><i class="material-icons right-align">favorite_border</i></a>
+                    </div>
+                  </div>
                 </div>
                 <div class="card-reveal">
                   <span class="card-title"><i class="material-icons activator">close</i></span><br><br>
@@ -184,7 +142,6 @@
                 </div>
                 </div>
               </div>
-            <!--</div>-->
 
             <form id="deleteplant" action="/plants/<%=plant.id%>/delete" method="post" style="display:none !important;">
               <input id="hidden" type="hidden" name="_method" value="delete">
@@ -192,11 +149,65 @@
             </form>
           </div>
 
+          <div id="statusmodal" class="modal modal-fixed-footer">
+           <form id="newplant" action="/<%=plant.id%>/statuses" method="POST">
+           <div class="modal-content">
+                    <h5 class="center-align"><i class="fa fa-pagelines fa-2x" aria-hidden="true" style="color:#00acc1;"></i></h5>
+                   <h4 class="header center-align" style="color:#00acc1;"><%=plant.name%> Status Update</h4>
+                   <div class="input-field" id="plant_statuses_event" >
+                   <select name="plant[statuses][event]" form="newplant">
+                     <option value="" disabled selected>Select an event</option>
+                     <option class="water_status" value="Watered" id="watered">Watered</option>
+                     <option class="water_status" value="Pruned" id="pruned">Pruned</option>
+                     <option class="water_status" value="Move to More Sun" id="moresun">Moved to More Sun</option>
+                     <option class="water_status" value="Moved to Less Sun" id="lesssun">Moved to Less Sun</option>
+                     <option class="water_status" value="Repotted" id="repotted">Repotted</option>
+                     </select>
+                      <label for="plant_statuses_event">Event</label>
+                   </div>
+
+                 <label for="status-date">Select the Event date</label>
+                 <input type="text" class="datepicker" id="status-date" name="plant[statuses][event_date]" form="newplant">
+
+                     <div class="input-field">
+                     <select name="plant[statuses][leaf_status]" form="newplant">
+                       <option value="" disabled selected>How's your plant looking?</option>
+                       <option value="New Growth">New Growth</option>
+                       <option value="Healthy">Healthy</option>
+                       <option value="Curling">Curling</option>
+                       <option value="Drooping">Drooping</option>
+                       <option value="Yellowing">Yellowing</option>
+                       <option value="Light Spots">Light Spots</option>
+                       <option value="Dark Spots">Dark Spots</option>
+                       <option value="Dead Leaves">Dead Leaves</option>
+                       </select>
+                        <label>Leaf Status</label>
+                     </div>
+
+                     <div class="input-field">
+                     <select name="plant[statuses][soil_status]" form="newplant">
+                       <option value="" disabled selected>How's the soil feel?</option>
+                       <option value="Extremely Dry">Extremely Dry</option>
+                       <option value="Dry">Dry</option>
+                       <option value="Damp">Damp</option>
+                       <option value="Soaked">Soaked</option>
+                       <option value="Showing Mildew">Showing Mildew</option>
+                       </select>
+                        <label>Soil Status</label>
+                     </div>
+             </div>
+
+             <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Cancel</a>
+                <button class="btn waves-effect waves-light deep-orange lighten-1" type="submit" name="action">Update
+                    <i class="material-icons right">add</i>
+                </button>
+             </div>
+               </form>
+             </div>
       <%end%>
       </div>
 
-      <!--</div>-->
-  <!--</div>-->
 
 <script>
 
@@ -205,6 +216,7 @@ $(document).ready(function() {
   $('.tooltipped').tooltip({delay: 50});
   $('.parallax').parallax();
   $('.carousel').carousel();
+  $('.modal').modal();
   $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
     selectYears: 15, // Creates a dropdown of 15 years to control year,

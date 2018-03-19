@@ -13,74 +13,65 @@
 <section>
   <div class="row">
    <div class="col s8 offset-s2">
-      <!--<div class="card">
-       <div class="card-content">-->
-        <h4 class="header center-align" style="color:#00acc1; margin-top:50px;">Edit Your Plant</h4>
-        <h5 class="header center-align" style="color:#00acc1; margin-top:50px;">--<%=@plant.name%>--</h5>
-      <div class="row">
-          <form id="newplant" action="/plants/<%@plant.id%>" class="col s12" method="POST">
-            <input id="hidden" type="hidden" name="_method" value="patch">
-          <div class="input-field" id="plant_statuses_event">
-          <select name="plant[statuses][event]">
-            <option value="" disabled selected>Select an event</option>
-            <option class="water_status" value="Watered" id="watered">Watered</option>
-            <option class="water_status" value="Pruned" id="pruned">Pruned</option>
-            <option class="water_status" value="Move to More Sun" id="moresun">Moved to More Sun</option>
-            <option class="water_status" value="Moved to Less Sun" id="lesssun">Moved to Less Sun</option>
-            <option class="water_status" value="Repotted" id="repotted">Repotted</option>
-            </select>
-             <label for="plant_statuses_event">Event</label>
-          </div>-->
+    <h4 class="header center-align cyan-text text-darken-1" style="color:#00acc1; margin-top:50px;"><i class="material-icons">edit</i><%=@plant.name%></h4>
+    <div class="row">
+      <form id="editplant" action="/plants/<%@plant.id%>" class="col s12" method="POST">
+        <input id="hidden" type="hidden" name="_method" value="patch">
 
             <div class="row">
               <div class="input-field col s12">
-                <input id="name" type="text" name="plant[name]">
+                <input id="name" type="text" name="plant[name]" value="<%=@plant.name%>">
                 <label for="name">Plant Name</label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
-                <input id="picture" type="text" name="plant[picture]">
+                <img class="circle responsive-img" src="<%=@plant.picture%>" style="height:200px;">
+                <input id="picture" type="text" name="plant[picture]" value="<%=@plant.picture%>">
                 <label for="picture">Photo Url</label>
               </div>
             </div>
 
             <div class="row">
               <div class="col s3">
+                <%sun = @plant.sunlight%>
+                <%dirt = @plant.soil%>
+                <%pot = @plant.container_size%>
+                <%drain = @plant.drainage%>
                 <h6 style="color:#00acc1;">Sunlight Needs</h6>
                 <p>
-                <input name="plant[sunlight]" type="radio" id="sunlight_low" value="Low"/>
+                <input name="plant[sunlight]" type="radio" id="sunlight_low" value="Low" <%='checked' if (sun == 'Low')%>/>
                 <label for="sunlight_low">Low</label>
               </p>
                 <p>
-                <input name="plant[sunlight]" type="radio" id="sunlight_med" value="Medium"/>
+                <input name="plant[sunlight]" type="radio" id="sunlight_med" value="Medium" <%='checked' if (sun == 'Medium')%>/>
                 <label for="sunlight_med">Medium</label>
               </p>
                 <p>
-                <input name="plant[sunlight]" type="radio" id="sunlight_high" value="High"/>
+                <input name="plant[sunlight]" type="radio" id="sunlight_high" value="High" <%='checked' if (sun == 'High')%>/>
                 <label for="sunlight_high">High</label>
               </p>
               </div>
               <div class="col s3">
                 <h6 style="color:#00acc1;">Soil Type</h6>
                 <p>
-                  <input name="plant[soil]" type="radio" id="soil-clay" value="Clay"/>
+                  <input name="plant[soil]" type="radio" id="soil-clay" value="Clay" <%='checked' if (dirt == 'Clay')%>/>
                   <label for="soil-clay">Clay</label>
                 </p>
                 <p>
-                  <input name="plant[soil]" type="radio" id="soil-silt" value="Silt"/>
+                  <input name="plant[soil]" type="radio" id="soil-silt" value="Silt" <%='checked' if (dirt == 'Silt')%>/>
                   <label for="soil-silt">Silt</label>
                 </p>
                 <p>
-                  <input name="plant[soil]" type="radio" id="soil-peaty" value="Peaty"/>
+                  <input name="plant[soil]" type="radio" id="soil-peaty" value="Peaty" <%='checked' if (dirt == 'Peaty')%>/>
                   <label for="soil-peaty">Peaty</label>
                 </p>
                 <p>
-                  <input name="plant[soil]" type="radio" id="soil-loam" value="Loam"/>
+                  <input name="plant[soil]" type="radio" id="soil-loam" value="Loam" <%='checked' if (dirt == 'Loam')%>/>
                   <label for="soil-loam">Loam</label>
                 </p>
                 <p>
-                  <input name="plant[soil]" type="radio" id="soil-chalky" value="Chalky"/>
+                  <input name="plant[soil]" type="radio" id="soil-chalky" value="Chalky" <%='checked' if (dirt == 'Chalky')%>/>
                   <label for="soil-chalky">Chalky</label>
                 </p>
               </div>
@@ -88,19 +79,19 @@
               <div class="col s3">
                 <h6 style="color:#00acc1;">Container Size</h6>
                 <p>
-                  <input name="plant[container]" type="radio" id="container-xs" value="Extra Small"/>
+                  <input name="plant[container]" type="radio" id="container-xs" value="Extra Small" <%='checked' if (pot == 'Extra Small')%>/>
                   <label for="container-xs">Extra Small</label>
                 </p>
                 <p>
-                  <input name="plant[container]" type="radio" id="container-sm" value="Small"/>
+                  <input name="plant[container]" type="radio" id="container-sm" value="Small" <%='checked' if (pot == 'Small')%>/>
                   <label for="container-sm">Small</label>
                 </p>
                 <p>
-                  <input name="plant[container]" type="radio" id="container-med" value="Medium"/>
+                  <input name="plant[container]" type="radio" id="container-med" value="Medium" <%='checked' if (pot == 'Medium')%>/>
                   <label for="container-med">Medium</label>
                 </p>
                 <p>
-                  <input name="plant[container]" type="radio" id="container-lg" value="Large"/>
+                  <input name="plant[container]" type="radio" id="container-lg" value="Large" <%='checked' if (pot == 'Large')%>/>
                   <label for="container-lg">Large</label>
                 </p>
               </div>
@@ -108,19 +99,19 @@
               <div class="col s3">
                 <h6 style="color:#00acc1;">Soil Drainage Needs</h6>
                 <p>
-                  <input name="plant[drainage]" type="radio" id="drainage-low" value="Low" />
+                  <input name="plant[drainage]" type="radio" id="drainage-low" value="Low" <%='checked' if (drain == 'Low')%>/>
                   <label for="drainage-low">Low</label>
                 </p>
                 <p>
-                  <input name="plant[drainage]" type="radio" id="drainage-med" value="Medium"/>
+                  <input name="plant[drainage]" type="radio" id="drainage-med" value="Medium" <%='checked' if (drain == 'Medium')%>/>
                   <label for="drainage-med">Medium</label>
                 </p>
                 <p>
-                  <input name="plant[drainage]" type="radio" id="drainage-high" value="High"/>
+                  <input name="plant[drainage]" type="radio" id="drainage-high" value="High" <%='checked' if (drain == 'High')%>/>
                   <label for="drainage-high">High</label>
                 </p>
                 <p>
-                  <input name="plant[drainage]" type="radio" id="drainage-very-high" value="Very High"/>
+                  <input name="plant[drainage]" type="radio" id="drainage-very-high" value="Very High" <%='checked' if (drain == 'Very High')%>/>
                   <label for="drainage-very-high">Very High</label>
                 </p>
               </div>
@@ -131,58 +122,70 @@
       </section>
 
 <section>
-        <div class="row">
-         <div class="col s8 offset-s2">
-           <!--<h2 class="header center-align" style="color:white;">Add Care Instructions</h2>
-            <div class="card" style="margin-top:50px;">
-             <div class="card-content">-->
-               <h4 class="header center-align" style="color:#00acc1; margin-top:50px;">Add care instructions</h4>
-               <div class="row">
-                 <div class="input-field col s4">
-                   <input id="water-amt" type="text" name="plant[instructions][water_amt]">
-                   <label for="water-amt">Water Amount</label>
-                 </div>
-                 <div class="input-field col s8">
-                 <select name="plant[instructions][water_amt_unit]" form="newplant">
-                   <option value="" disabled selected>Unit of Water</option>
-                   <option value="Spritz">Spritz</option>
-                   <option value="Teaspoon(s)">Teaspoon(s)</option>
-                   <option value="Tablespoon(s)" >Tablespoon(s)</option>
-                   <option value="Cup(s)">Cup(s)</option>
-                   <option value="Pint(s)" >Pint(s)</option>
-                   <option value="Ounce(s)">Ounce(s)</option>
-                   <option value="Quart(s)">Quart(s)</option>
-                   </select>
-                    <label>Water Unit</label>
-                 </div>
-               </div>
-
-               <div class="row">
-                 <div class="input-field col s4">
-                   <input id="water-freq" type="text" name="plant[instructions][water_freq]">
-                   <label for="water-freq">Water Frequency</label>
-                 </div>
-                 <div class="input-field col s8">
-                 <select name="plant[instructions][water_freq_unit]" form="newplant">
-                   <option value="" disabled selected>Frequency Unit</option>
-                   <option value="Day(s)">Day(s)</option>
-                   <option value="Week(s)">Week(s)</option>
-                   <option value="Month(s)" >Month(s)</option>
-                   </select>
-                    <label>Frequency</label>
-                 </div>
-               </div>
-             </div>
+  <div class="row">
+   <div class="col s8 offset-s2">
+     <h4 class="header center-align" style="color:#00acc1; margin-top:50px;">Edit care instructions</h4>
+     <div class="row">
+       <div class="input-field col s4">
+         <input id="water-amt" type="text" name="plant[instructions][water_amt]" value="<%=@plant.instructions[0][:water_amt]%>">
+         <label for="water-amt">Water Amount</label>
+       </div>
+       <div class="input-field col s8">
+         <%unit = @plant.instructions[0][:water_amt_unit]%>
+       <select id="liquid" name="plant[instructions][water_amt_unit]" form="editplant">
+         <option value="" disabled selected>Unit of Water</option>
+         <option value="Spritz" id="spritz" <%='selected' if (unit == 'Spritz')%>>Spritz</option>
+         <option value="Teaspoon(s)" id="tsp" <%='selected' if (unit == 'Teaspoon(s)')%>>Teaspoon(s)</option>
+         <option value="Tablespoon(s)" id="tbsp" <%='selected' if (unit == 'Tablespoon(s)')%>>Tablespoon(s)</option>
+         <option value="Cup(s)" id="cup" <%='selected' if (unit == 'Cup(s)')%>>Cup(s)</option>
+         <option value="Pint(s)" id="pint" <%='selected' if (unit == 'Pint(s)')%>>Pint(s)</option>
+         <option value="Ounce(s)" id="oz" <%='selected' if (unit == 'Ounce(s)')%>>Ounce(s)</option>
+         <option value="Quart(s)" id="qt" <%='selected' if (unit == 'Quart(s)')%>>Quart(s)</option>
+         </select>
+          <label>Water Unit</label>
+       </div>
+       <%case unit
+            when "Spritz"%>
+              <script>document.getElementById("spritz").classList.add('active selected');</script>
+            <%when "Teaspoon(s)"%>
+              <script>document.getElementById("tsp").classList.add('active selected');</script>
+            <%when "Tablespoon(s)"%>
+              <script>document.getElementById("tbsp").classList.add('active selected');</script>
+            <%when "Cup(s)"%>
+              <script>$("liquid").material_select("cup");</script>
+            <%when "Pint(s)"%>
+              <script>document.getElementById("pint").classList.add('active selected');</script>
+            <%when "Ounce(s)"%>
+              <script>document.getElementById("oz").classList.add('active selected');</script>
+            <%when "Quart(s)"%>
+              <script>document.getElementById("qt").classList.add('active selected');</script>
+          <%else%>
+          <%end%>
      </div>
-   <!--</div>
-  </div>-->
+
+     <div class="row">
+       <div class="input-field col s4">
+         <input id="water-freq" type="text" name="plant[instructions][water_freq]" value="<%=@plant.instructions[0][:water_freq]%>">
+         <label for="water-freq">Water Frequency</label>
+       </div>
+       <div class="input-field col s8">
+         <%freq = @plant.instructions[0][:water_freq_unit]%>
+       <select name="plant[instructions][water_freq_unit]" form="edit">
+         <option value="" disabled selected>Frequency Unit</option>
+         <option value="Day(s)" <%='selected' if freq == 'Day(s)'%>>Day(s)</option>
+         <option value="Week(s)" <%='selected' if freq == 'Week(s)'%>>Week(s)</option>
+         <option value="Month(s)" <%='selected' if freq == 'Month(s)'%>>Month(s)</option>
+         </select>
+          <label>Frequency</label>
+       </div>
+     </div>
+   </div>
+     </div>
 </section>
 
       <div class="row" style="height:200px;">
         <div class="input-field col offset-s5" style="margin-top:5S0px;">
-          <button class="btn-large waves-effect waves-light deep-orange lighten-1" type="submit" name="action">Submit
-              <i class="material-icons right">add</i>
-          </button>
+          <button class="btn-large waves-effect waves-light deep-orange lighten-1" type="submit" name="action">Update</button>
         </div>
       </div>
     </form>
@@ -196,6 +199,7 @@
 $(document).ready(function() {
   $('select').material_select();
   $('.tooltipped').tooltip({delay: 50});
+  $('ul.tabs').tabs();
   $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
     selectYears: 15, // Creates a dropdown of 15 years to control year,
@@ -204,5 +208,9 @@ $(document).ready(function() {
     close: 'Ok',
     closeOnSelect: false // Close upon selecting a date,
   });
+
+  $("liquid").material_select("Cup(s)");
 });
+
+
 </script>
