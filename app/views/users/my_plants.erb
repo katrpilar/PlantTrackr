@@ -44,8 +44,8 @@
    <div class="nav-wrapper green darken-1">
      <a href="/" class="brand-logo">PlantTrack</a>
      <ul class="right hide-on-med-and-down">
-       <li class="active"><a href="/plants">Browse</a></li>
-       <li><a href="/my-plants">My Plants</a></li>
+       <li><a href="/plants">Browse</a></li>
+       <li><a href="/greenhouse" class="active">My Plants</a></li>
        <li><a href="/plants/new">Create Plant</a></li>
        <li><a href="/logout" class="waves-effect waves-light btn light-green darken-4">Logout</a></li>
      </ul>
@@ -66,13 +66,10 @@
     </div>
   </div>
 
-<div class="parallax-container" style="height:450px;">
-  <div class="parallax" style="background-color:#000000;"><img src="https://images.pexels.com/photos/631909/pexels-photo-631909.jpeg?w=1260&h=750&dpr=3&auto=compress&cs=tinysrgb" style="opacity: 0.7; filter:blur(5px);"></div>
-        <h2 class="header center-align" style="color:#ffffff; margin-top:1.25em;">Welcome, <%=@user.username%></h2>
+<div class="parallax-container" style="height:300px;">
+  <div class="parallax" style="background-color:#43A047;"><img src="https://images.pexels.com/photos/631909/pexels-photo-631909.jpeg?w=1260&h=750&dpr=3&auto=compress&cs=tinysrgb" style="opacity: 0.6; filter:blur(5px);"></div>
+        <h2 class="header center-align" style="color:#ffffff; margin-top:1.25em;">My Greenhouse</h2>
         <hr style="border-color:#ffffff; width:40%;"><br>
-        <h5 class="header center-align" style="color:#ffffff;">Browse all community plants and click <i class="material-icons">content_copy</i> to add it to your greenhouse.</h5>
-        <br>
-        <br>
           <p class="center-align">
             <a href="/plants/new"><button class="btn-large waves-effect waves-light deep-orange lighten-1">Create Plant
                 <i class="material-icons right">add</i>
