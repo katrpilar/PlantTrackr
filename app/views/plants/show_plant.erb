@@ -38,7 +38,7 @@
      <a href="/" class="brand-logo">PlantTrack</a>
      <ul class="right hide-on-med-and-down">
        <li><a href="/plants">Browse</a></li>
-       <li><a href="/my-plants">My Plants</a></li>
+       <li><a href="/greenhouse">My Plants</a></li>
        <li><a href="/plants/new">Create Plant</a></li>
        <li><a href="/logout" class="waves-effect waves-light btn light-green darken-4">Logout</a></li>
      </ul>
@@ -141,21 +141,21 @@
       <%case statevent
         when "Watered"%>
           <%staticon = "<i class='fa fa-tint circle' ></i>"%>
-        <%when "Pruned"%>
-        <%when "Moved to More Sun"%>
-          <%staticon = "<i class='material-icons'>wb_sunny</i>"%>
-        <%when "Moved to Less Sun"%>
-          <%staticon = "<i class='material-icons'>wb_cloudy</i>"%>
-        <%when "Repotted"%>
-          <%staticon = "<i class='fa fa-archive'></i>"%>
-      <%else%>
+        <%when "Pruned"
+          staticon = "<i class='material-icons circle'>content_cut</i>"%>
+        <%when "Moved to More Sun"
+          staticon = "<i class='fa fa-sun-o circle'></i>"%>
+        <%when "Moved to Less Sun"
+          staticon = "<i class='material-icons circle'>wb_cloudy</i>"%>
+        <%when "Repotted"
+          staticon = "<i class='fa fa-archive circle'></i>"%>
       <%end%>
       <li class="collection-item avatar">
         <%= staticon%>
-        <span class="title">Title</span>
-        <p>First Line <br>
-           Second Line
-        </p>
+        <span class="title"><%=stat.event%></span>
+        <p><i><%=stat.event_date%></i></p>
+        <p>Soil: <%=stat.soil_status%></p>
+        <p>Foliage: <%=stat.leaf_status%></p>
         <a href="#!" class="secondary-content"><i class="material-icons">delete</i></a>
       </li>
 

@@ -3,7 +3,7 @@
      <a href="/" class="brand-logo">PlantTrack</a>
      <ul class="right hide-on-med-and-down">
        <li><a href="/plants">Browse</a></li>
-       <li><a href="/my-plants">My Plants</a></li>
+       <li><a href="/greenhouse">My Plants</a></li>
        <li><a href="/plants/new">Create Plant</a></li>
        <li><a href="/logout" class="waves-effect waves-light btn green darken-1">Logout</a></li>
      </ul>
@@ -15,9 +15,8 @@
    <div class="col s8 offset-s2">
     <h4 class="header center-align cyan-text text-darken-1" style="color:#00acc1; margin-top:50px;"><i class="material-icons">edit</i><%=@plant.name%></h4>
     <div class="row">
-      <form id="editplant" action="/plants/<%@plant.id%>" class="col s12" method="POST">
-        <input id="hidden" type="hidden" name="_method" value="patch">
-
+      <form id="editplant" action="/plants/<%=@plant.id%>" class="col s12" method="POST">
+        <input id="hidden" type="hidden" name="_method" value="patch" for="editplant">
             <div class="row">
               <div class="input-field col s12">
                 <input id="name" type="text" name="plant[name]" value="<%=@plant.name%>">
@@ -127,11 +126,11 @@
      <h4 class="header center-align" style="color:#00acc1; margin-top:50px;">Edit care instructions</h4>
      <div class="row">
        <div class="input-field col s4">
-         <input id="water-amt" type="text" name="plant[instructions][water_amt]" value="<%=@plant.instructions[0][:water_amt]%>">
+         <input id="water-amt" type="text" name="plant[instructions][water_amt]" value="<%=@plant.instructions.last[:water_amt]%>">
          <label for="water-amt">Water Amount</label>
        </div>
        <div class="input-field col s8">
-         <%unit = @plant.instructions[0][:water_amt_unit]%>
+         <%unit = @plant.instructions.last[:water_amt_unit]%>
        <select id="liquid" name="plant[instructions][water_amt_unit]" form="editplant">
          <option value="" disabled selected>Unit of Water</option>
          <option value="Spritz" id="spritz" <%='selected' if (unit == 'Spritz')%>>Spritz</option>
@@ -144,37 +143,20 @@
          </select>
           <label>Water Unit</label>
        </div>
-       <%case unit
-            when "Spritz"%>
-              <script>document.getElementById("spritz").classList.add('active selected');</script>
-            <%when "Teaspoon(s)"%>
-              <script>document.getElementById("tsp").classList.add('active selected');</script>
-            <%when "Tablespoon(s)"%>
-              <script>document.getElementById("tbsp").classList.add('active selected');</script>
-            <%when "Cup(s)"%>
-              <script>$("liquid").material_select("cup");</script>
-            <%when "Pint(s)"%>
-              <script>document.getElementById("pint").classList.add('active selected');</script>
-            <%when "Ounce(s)"%>
-              <script>document.getElementById("oz").classList.add('active selected');</script>
-            <%when "Quart(s)"%>
-              <script>document.getElementById("qt").classList.add('active selected');</script>
-          <%else%>
-          <%end%>
      </div>
 
      <div class="row">
        <div class="input-field col s4">
-         <input id="water-freq" type="text" name="plant[instructions][water_freq]" value="<%=@plant.instructions[0][:water_freq]%>">
+         <input id="water-freq" type="text" name="plant[instructions][water_freq]" value="<%=@plant.instructions.last[:water_freq]%>">
          <label for="water-freq">Water Frequency</label>
        </div>
        <div class="input-field col s8">
-         <%freq = @plant.instructions[0][:water_freq_unit]%>
-       <select name="plant[instructions][water_freq_unit]" form="edit">
+         <%pfreq = @plant.instructions.last[:water_freq_unit]%>
+       <select name="plant[instructions][water_freq_unit]" form="editplant">
          <option value="" disabled selected>Frequency Unit</option>
-         <option value="Day(s)" <%='selected' if freq == 'Day(s)'%>>Day(s)</option>
-         <option value="Week(s)" <%='selected' if freq == 'Week(s)'%>>Week(s)</option>
-         <option value="Month(s)" <%='selected' if freq == 'Month(s)'%>>Month(s)</option>
+         <option value="Day(s)" <%='selected' if pfreq == 'Day(s)'%>>Day(s)</option>
+         <option value="Week(s)" <%='selected' if pfreq == 'Week(s)'%>>Week(s)</option>
+         <option value="Month(s)" <%='selected' if pfreq == 'Month(s)'%>>Month(s)</option>
          </select>
           <label>Frequency</label>
        </div>

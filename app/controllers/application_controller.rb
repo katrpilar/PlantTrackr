@@ -116,16 +116,34 @@ class ApplicationController < Sinatra::Base
   #   @user = User.find_by_id(session[:user_id])
   #   erb :'/users/edit_user'
   # end
+  get '/greenhouse' do
+    @user = User.find_by_id(session[:user_id])
+    @plants = User.find_by_id(session[:user_id]).plants
+    erb :'/users/my_plants'
+  end
 
   patch '/plants/:id' do
-      @plant = Plant.update(name: params[:plant][:name], picture: params[:plant][:picture], sunlight: params[:plant][:sunlight], soil: params[:plant][:soil], container_size: params[:plant][:container], drainage: params[:plant][:drainage])
+      @plant = Plant.find_by_id(params[:id])
+      @plant.update(name: params[:plant][:name], picture: params[:plant][:picture], sunlight: params[:plant][:sunlight], soil: params[:plant][:soil], container_size: params[:plant][:container], drainage: params[:plant][:drainage])
       @plant.save
       # Need to ensure that instructions and status tables have timestamps
       # @plant.instructions =
-      @instruction = Instruction.create(water_amt: params[:plant][:instructions][:water_amt], water_amt_unit: params[:plant][:instructions][:water_amt_unit], water_freq: params[:plant][:instructions][:water_freq], water_freq_unit: params[:plant][:instructions][:water_freq_unit])
-      @instruction.plant = @plant
-      @instruction.save
+      #binding.pry
+
+      if params[:plant][:instructions][:water_amt] != @plant.instructions.last.water_amt || params[:plant][:instructions][:water_amt_unit] != @plant.instructions.last.water_amt_unit || params[:plant][:instructions][:water_freq] != @plant.instructions.last.water_freq || params[:plant][:instructions][:water_freq_unit] != @plant.instructions.last.water_freq
+        @instruction = Instruction.create(water_amt: params[:plant][:instructions][:water_amt], water_amt_unit: params[:plant][:instructions][:water_amt_unit], water_freq: params[:plant][:instructions][:water_freq], water_freq_unit: params[:plant][:instructions][:water_freq_unit])
+        @instruction.plant = @plant
+        @instruction.save
+      end
       redirect to :"/plants/#{@plant.id}"
+  end
+
+  post '/:plant_id/statuses' do
+    @plant = Plant.find_by_id(params[:plant_id])
+    @status = Status.create(event: params[:plant][:statuses][:event], event_date: params[:plant][:statuses][:event_date], soil_status: params[:plant][:statuses][:soil_status], leaf_status: params[:plant][:statuses][:leaf_status])
+    @status.plant = @plant
+    @status.save
+    redirect to :"/plants/#{@plant.id}"
   end
 
 end
