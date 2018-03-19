@@ -6,6 +6,13 @@
   top: 5px !important;
   }
 
+  .fixed-action-btn-2 {
+    float: right !important;
+    position: absolute !important;
+    right: 50px !important;
+    top: 5px !important;
+    }
+
   #overlay {
     position: fixed; /* Sit on top of the page content */
     width: 100%; /* Full width (cover the whole page) */
@@ -123,7 +130,8 @@
                         <i class="large material-icons">mode_edit</i>
                       </a>
                       <ul>
-                        <li class="waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="View Page"><a href="/plants/<%=plant.id%>"><i class="material-icons">fullscreen</i></a></li>
+                        <li class="waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Journal"><a href="/plants/<%=plant.id%>"><i class="material-icons">event_note</i></a></li>
+                        <li class="waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Update"><a href="/plants/<%=plant.id%>"><i class="material-icons">playlist_add</i></a></li>
                         <li class="waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"><a href="#!"><i class="material-icons">edit</i></a></li>
                         <li class="waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Copy"><a href="#!"><i class="material-icons">content_copy</i></a></li>
                           <li class="waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Delete"><a href="#" onclick="document.getElementById('deleteplant').submit();"><i class="material-icons">delete_forever</i></a></li>
@@ -131,10 +139,13 @@
                     </div>
 
                   <%else%>
-                    <div class="fixed-action-btn" style="padding-top:0px !important;">
-                        <a class="btn-floating btn-sm deep-orange lighten-1">
-                          <i class="large material-icons">content_copy</i>
-                        </a>
+                  <div class="fixed-action-btn" style="padding-top:0px !important;">
+                      <a class="btn-floating btn-sm deep-orange lighten-1">
+                        <i class="large material-icons">content_copy</i>
+                      </a>
+                      <a class="fixed-action-btn-2 btn-floating btn-sm deep-orange lighten-1" style="padding-top:0px !important;">
+                        <i class="large material-icons">favorite_border</i>
+                      </a>
                     </div>
                   <%end%>
                 <div class="card-image waves-effect waves-block waves-light">
