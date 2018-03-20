@@ -13,6 +13,7 @@ gem 'bcrypt'
 gem "tux"
 gem 'materialize-sass'
 gem 'font-awesome-less'
+gem 'shareable'
 
 group :test do
   gem 'rspec'

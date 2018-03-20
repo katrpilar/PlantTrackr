@@ -103,6 +103,7 @@
 
 
                 </div>
+                <div id="copyit" style="display:none !important;">/plants/<%=plant.id%></div>
 
                 <div class="card-content">
                   <span class="card-title activator grey-text text-darken-4"><h5><%=plant.name%><i class="small material-icons right">expand_more</i></h5></span>
@@ -115,9 +116,10 @@
                     <a href="#" class=" teal-text text-lighten-1"><%=plant.instructions.last.water_amt%> <%=plant.instructions.last.water_amt_unit%> of water every <%=plant.instructions.last.water_freq%> <%=plant.instructions.last.water_freq_unit%></a>
                     </div>
                     <div class="col s4 right-align">
-                      <a href="#"><i class="material-icons right-align">share</i></a>
-                      <a href="#"><i class="material-icons right-align">content_copy</i></a>
-                      <a href="#"><i class="material-icons right-align">favorite_border</i></a>
+                      <%= render_shareable %>
+                      <a class="btn-flat" style="margin-right:5px;padding:0px !important;" onclick="myFunction()"><i class="material-icons right-align">share</i></a>
+                      <a class="btn-flat" style="margin-right:5px;padding:0px !important;"><i class="material-icons right-align">content_copy</i></a>
+                      <a class="btn-flat" style="margin-right:5px;padding:0px !important;"><i class="material-icons right-align">favorite_border</i></a>
                     </div>
                   </div>
                 </div>
