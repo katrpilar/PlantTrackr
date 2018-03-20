@@ -11,7 +11,7 @@ Models: User, Plant, Instruction, Status
 Users own and has many Plants. Plants have many Care Instructions. Plants have many Statuses.
 - [x] Include user accounts
 Users can create accounts, login, and logout
-- [] Ensure that users can't modify content created by other users
+- [x] Ensure that users can't modify content created by other users
 - [x] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying
 
 PLANT
