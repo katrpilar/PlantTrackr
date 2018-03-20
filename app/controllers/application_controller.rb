@@ -162,7 +162,7 @@ class ApplicationController < Sinatra::Base
       @plant = Plant.find_by_id(params[:id])
       if current_user == @plant.user
         @plant.update(name: params[:plant][:name], picture: params[:plant][:picture], sunlight: params[:plant][:sunlight], soil: params[:plant][:soil], container_size: params[:plant][:container], drainage: params[:plant][:drainage])
-        @plant.savegi
+        @plant.save
         if params[:plant][:instructions][:water_amt] != @plant.instructions.last.water_amt || params[:plant][:instructions][:water_amt_unit] != @plant.instructions.last.water_amt_unit || params[:plant][:instructions][:water_freq] != @plant.instructions.last.water_freq || params[:plant][:instructions][:water_freq_unit] != @plant.instructions.last.water_freq
           @instruction = Instruction.create(water_amt: params[:plant][:instructions][:water_amt], water_amt_unit: params[:plant][:instructions][:water_amt_unit], water_freq: params[:plant][:instructions][:water_freq], water_freq_unit: params[:plant][:instructions][:water_freq_unit])
           @instruction.plant = @plant
