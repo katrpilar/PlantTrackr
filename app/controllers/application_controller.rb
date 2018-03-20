@@ -108,6 +108,7 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  #copy plant is copying the same plant repeatedly
   post '/plants/:id/copy' do
     @oldplant = Plant.find_by_id(params[:id])
     @plant = @oldplant.dup
