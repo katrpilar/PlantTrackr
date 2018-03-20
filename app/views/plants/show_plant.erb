@@ -169,42 +169,6 @@
   </div>
 </section>
 
-
-
-<!--  <div class="row container">
-      <div class="col s12 m12">
-        <div class="card large">
-
-          <div class="card-content">
-            <span class="card-title grey-text text-darken-4"><h5><%=@plant.name%></h5></span>
-            <p>Created By: <%=User.find_by_id(@plant.user_id).username%></p>
-          </div>
-          <div class="card-action">
-            <%plantid = @plant.id%>
-            <a href="#" class="teal-text text-lighten-1"><%=Instruction.find_by_id(plantid)[:water_amt]%> <%=Instruction.find_by_id(plantid)[:water_amt_unit]%> of water every <%=Instruction.find_by_id(plantid)[:water_freq]%> <%=Instruction.find_by_id(plantid)[:water_freq_unit]%></a>
-          </div>
-          <div class="card-reveal">
-            <span class="card-title"><i class="material-icons activator">close</i></span><br><br>
-            <span class="card-title grey-text text-darken-4 center-align"><%=@plant.name%></span>
-            <div class="col s12 m12">
-              <ul class="collection" style="border:none;">
-                <li class="collection-item" >
-                  <h6><%=@plant.soil%> Soil <i class="material-icons secondary-content" style="vertical-align:middle;">landscape</i></h6>
-                </li>
-                <li class="collection-item" >
-                  <h6><%=@plant.sunlight%> Sunlight<i class="material-icons secondary-content">wb_sunny</i></h6>
-                </li>
-                <li class="collection-item" >
-                  <h6><%=@plant.container_size%> Container<i class="fa fa-archive secondary-content"></i></h6>
-                </li>
-                <li class="collection-item" >
-                  <h6><%=@plant.drainage%> Drainage<i class="fa fa-shower fa-lg secondary-content"></i></h6>
-                </li>
-              </ul>
-          </div>
-          </div>
-        </div>-->
-
       <form id="deleteplant" action="/plants/<%=@plant.id%>/delete" method="post">
         <input id="hidden" type="hidden" name="_method" value="delete">
         <input type="submit" value="Delete Plant" id="delete">

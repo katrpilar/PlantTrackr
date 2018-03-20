@@ -10,41 +10,12 @@
    </div>
  </nav>
 
- <!--<div class="parallax-container" style="height:300px;">
-   <h2 class="header center-align" style="color:white; padding-top:6%;">Add a New Plant</h2>
-   <div class="parallax"><img src="https://images.pexels.com/photos/572487/pexels-photo-572487.jpeg?w=1260&h=750&dpr=3&auto=compress&cs=tinysrgb"></div>
- </div>-->
-
 <section>
   <div class="row">
    <div class="col s8 offset-s2">
-      <!--<div class="card">
-       <div class="card-content">-->
-        <h4 class="header center-align" style="color:#00acc1; margin-top:50px;">Add a New Plant</h4>
+      <h4 class="header center-align" style="color:#00acc1; margin-top:50px;">Add a New Plant</h4>
       <div class="row">
           <form id="newplant" action="/plants" class="col s12" method="POST">
-            <!--<div class="input-field">
-
-                      <select name="car">
-              <option value="volvo">Volvo</option>
-              <option value="saab">Saab</option>
-              <option value="opel">Opel</option>
-              <option value="audi">Audi</option>
-            </select>
-          </div>
-
-          <div class="input-field" id="plant_statuses_event">
-          <select name="plant[statuses][event]">
-            <option value="" disabled selected>Select an event</option>
-            <option class="water_status" value="Watered" id="watered">Watered</option>
-            <option class="water_status" value="Pruned" id="pruned">Pruned</option>
-            <option class="water_status" value="Move to More Sun" id="moresun">Moved to More Sun</option>
-            <option class="water_status" value="Moved to Less Sun" id="lesssun">Moved to Less Sun</option>
-            <option class="water_status" value="Repotted" id="repotted">Repotted</option>
-            </select>
-             <label for="plant_statuses_event">Event</label>
-          </div>-->
-
             <div class="row">
               <div class="input-field col s12">
                 <input id="name" type="text" name="plant[name]" required>
@@ -96,18 +67,6 @@
                   <input name="plant[soil]" type="radio" id="soil-chalky" value="Chalky"/>
                   <label for="soil-chalky">Chalky</label>
                 </p>
-                <!--<select>
-                  <option value="" disabled selected>Choose the soil type</option>
-                  <option value="sandy" onclick="Materialize.toast('I am a toast', 4000)">Sandy</option>
-                  <option value="clay">Clay</option>
-                  <option value="silt" >Silt</option>
-                  <option value="peaty">Peaty</option>
-                  <option value="loam">Loam</option>
-                  <option value="chalky">Chalky</option>
-                </select>
-              <label>Soil Type</label>
-              <p id="soil-description" style="color:#00acc1;">thing</p>
-            -->
               </div>
 
               <div class="col s3">
@@ -153,9 +112,6 @@
             </div>
             </div>
             </div>
-            <!--
-            </div>
-          </div>-->
       </section>
 
 <div class="parallax-container" style="height:700px">
@@ -222,9 +178,6 @@
 <section>
         <div class="row">
          <div class="col s8 offset-s2">
-           <!--<h2 class="header center-align" style="color:white;">Add Care Instructions</h2>
-            <div class="card" style="margin-top:50px;">
-             <div class="card-content">-->
                <h4 class="header center-align" style="color:#00acc1; margin-top:50px;">Add care instructions</h4>
                <div class="row">
                  <div class="input-field col s4">
@@ -263,8 +216,6 @@
                </div>
              </div>
      </div>
-   <!--</div>
-  </div>-->
 </section>
 
       <div class="row" style="height:200px;">
@@ -273,21 +224,9 @@
               <i class="material-icons right">add</i>
           </button>
 
-          <!--<input type="submit" value="submit" class="waves-effect waves-light btn-large deep-orange lighten-1" name="submit"></input>-->
         </div>
       </div>
     </form>
-
-
-<!--
-<ul class="pagination">
-    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-    <li class="active"><a href="/plants/new">1</a></li>
-    <li class="waves-effect"><a href="#instructions">2</a></li>
-    <li class="waves-effect"><a href="/statuses">3</a></li>
-    <li class="waves-effect"><a href="/plants">4</a></li>
-    <li class="waves-effect"><a href="/instructions" class="waves-effect waves-light btn blue-grey lighten-3">Next</a></li>
-  </ul>-->
 
 <script>
 $(document).ready(function() {
@@ -327,36 +266,4 @@ $("form").submit(function(e) {
   }
 });
 
-
-function getComboA(selectObject) {
-    var value = selectObject.value;
-}
-
-
-function changeSoilDescription() {
-  var elem = document.getElementById('soil-description');
-  var selected = document.getElementsByClassName('active selected')[0].innerText;
-  switch(selected) {
-    case "Sandy":
-        elem.innerText = "Sandy soils are light, dry, warm, low in nutrients and often acidic";
-        break;
-    case "Clay":
-      elem.innerText = "Clay soils are heavy, high in nutrients, wet and cold in winter and baked dry in summer";
-        break;
-    case "Silt":
-      elem.innerText = "Silt soils are fertile, light but moisture-retentive, and easily compacted";
-        break;
-    case "Peaty":
-      elem.innerText = "Peat soils are very high in organic matter and moisture";
-        break;
-    case "Loam":
-      elem.innerText = "Loams are mixtures of clay, sand and silt that avoid the extremes of each type";
-        break;
-    case "Chalky":
-      elem.innerText = "Chalky soils are very alkaline and may be light or heavy";
-        break;
-    default:
-      elem.innerText = "";
-    }
-}
 </script>
