@@ -1,5 +1,31 @@
 <!DOCTYPE html>
   <html>
+  <style>
+  .spinner-layer {
+          border-color: white !important;
+      }
+
+  #overlay {
+    position: fixed; /* Sit on top of the page content */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #43A047; /* Green background with opacity */
+    z-index: 2000; /* Specify a stack order in case you're using a different order for other elements */
+    }
+
+    .centered {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      /* bring your own prefixes transform: translate(-50%, -50%);*/
+
+    }
+
+  </style>
     <head>
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -18,7 +44,27 @@
     </head>
 
     <body style="background-color:#f5f5f5;">
+      <div class="preloader hero" id="overlay">
+      <div class="preloader-wrapper big active centered">
+            <div class="spinner-layer spinner-blue" style="z-index:3000;">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div><div class="gap-patch">
+                <div class="circle"></div>
+              </div><div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
 
       <%= yield %>
     </body>
   </html>
+
+  <script>
+  $(window).on('load', function() {
+           $('.preloader').delay(600).fadeOut('slow');
+           $('.preloader-wrapper').delay(500).fadeOut();
+       });
+  </script>

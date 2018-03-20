@@ -13,29 +13,6 @@
     top: 5px !important;
     }
 
-  #overlay {
-    position: fixed; /* Sit on top of the page content */
-    width: 100%; /* Full width (cover the whole page) */
-    height: 100%; /* Full height (cover the whole page) */
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #43A047; /* Black background with opacity */
-    z-index: 2000; /* Specify a stack order in case you're using a different order for other elements */
-}
-
-.spinner-layer {
-        border-color: white !important;
-    }
-
-.centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  /* bring your own prefixes transform: translate(-50%, -50%);*/
-
-}
 .material-icons {
     vertical-align: middle;
 }
@@ -51,20 +28,6 @@
      </ul>
    </div>
  </nav>
-
-<div class="preloader hero" id="overlay">
-<div class="preloader-wrapper big active centered">
-      <div class="spinner-layer spinner-blue" style="z-index:3000;">
-        <div class="circle-clipper left">
-          <div class="circle"></div>
-        </div><div class="gap-patch">
-          <div class="circle"></div>
-        </div><div class="circle-clipper right">
-          <div class="circle"></div>
-        </div>
-      </div>
-    </div>
-  </div>
 
 <div class="parallax-container" style="height:300px;">
   <div class="parallax" style="background-color:#43A047;"><img src="https://images.pexels.com/photos/631909/pexels-photo-631909.jpeg?w=1260&h=750&dpr=3&auto=compress&cs=tinysrgb" style="opacity: 0.6; filter:blur(5px);"></div>
@@ -228,9 +191,4 @@ $(document).ready(function() {
 
 
 });
-
-   $(window).on('load', function() {
-            $('.preloader').delay(600).fadeOut('slow');
-            $('.preloader-wrapper').delay(500).fadeOut();
-        });
    </script>
