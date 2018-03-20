@@ -47,13 +47,13 @@
 
             <div class="row">
               <div class="input-field col s12">
-                <input id="name" type="text" name="plant[name]">
+                <input id="name" type="text" name="plant[name]" required>
                 <label for="name">Plant Name</label>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
-                <input id="picture" type="text" name="plant[picture]">
+                <input id="picture" type="text" name="plant[picture]" required>
                 <label for="picture">Photo Url</label>
               </div>
             </div>
@@ -228,11 +228,11 @@
                <h4 class="header center-align" style="color:#00acc1; margin-top:50px;">Add care instructions</h4>
                <div class="row">
                  <div class="input-field col s4">
-                   <input id="water-amt" type="text" name="plant[instructions][water_amt]">
+                   <input id="water-amt" type="text" name="plant[instructions][water_amt]" required>
                    <label for="water-amt">Water Amount</label>
                  </div>
                  <div class="input-field col s8">
-                 <select name="plant[instructions][water_amt_unit]" form="newplant">
+                 <select name="plant[instructions][water_amt_unit]" form="newplant" required>
                    <option value="" disabled selected>Unit of Water</option>
                    <option value="Spritz">Spritz</option>
                    <option value="Teaspoon(s)">Teaspoon(s)</option>
@@ -248,17 +248,17 @@
 
                <div class="row">
                  <div class="input-field col s4">
-                   <input id="water-freq" type="text" name="plant[instructions][water_freq]">
+                   <input id="water-freq" type="text" name="plant[instructions][water_freq]" required>
                    <label for="water-freq">Water Frequency</label>
                  </div>
                  <div class="input-field col s8">
-                 <select name="plant[instructions][water_freq_unit]" form="newplant">
+                 <select name="plant[instructions][water_freq_unit]" form="newplant" required>
                    <option value="" disabled selected>Frequency Unit</option>
                    <option value="Day(s)">Day(s)</option>
                    <option value="Week(s)">Week(s)</option>
                    <option value="Month(s)" >Month(s)</option>
                    </select>
-                    <label>Frequency</label>
+                    <label data-error="wrong">Frequency</label>
                  </div>
                </div>
              </div>
@@ -303,9 +303,30 @@ $(document).ready(function() {
     close: 'Ok',
     closeOnSelect: false // Close upon selecting a date,
   });
-
+  $("select[required]").css({display: "inline", height: 0, padding: 0, width: 0});
 
 });
+
+$("form").submit(function(e) {
+  $(".radioRequired").each(function() {
+    var rName = $(this).attr('name');
+    var checked = $('[name=' + rName + ']').is(':checked');
+    if (!checked && !$(this).hasClass('radioWarning')) {
+      $(this).addClass('radioWarning');
+      $(this).append('<div class="chip radioMessage">' + $(this).data("error") + '</div>');
+    }
+    if (checked) {
+      $(this).removeClass('radioWarning');
+      $(this).children('.radioMessage').remove();
+    }
+  });
+
+  if ($(".radioWarning").length > 0) {
+    e.preventDefault();
+    return false;
+  }
+});
+
 
 function getComboA(selectObject) {
     var value = selectObject.value;
