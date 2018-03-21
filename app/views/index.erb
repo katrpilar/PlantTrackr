@@ -45,28 +45,28 @@
      <div class="row">
        <div class="col s12 m4">
          <div class="icon-block">
-           <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
-           <h5 class="center">Speeds up development</h5>
+           <h2 class="center light-green-text"><i class="fa fa-pagelines fa-2g" aria-hidden="true"></i></h2>
+           <h5 class="center">Save Care Instructions</h5>
 
-           <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+           <p class="light">Save each of your indoor plants' care instructions individually to ensure they get the right TLC they need even when you're away on vacay.</p>
          </div>
        </div>
 
        <div class="col s12 m4">
          <div class="icon-block">
-           <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
-           <h5 class="center">User Experience Focused</h5>
+           <h2 class="center light-green-text"><i class="fa fa-medkit fa-2g" aria-hidden="true"></i></h2>
+           <h5 class="center">Update Plant Statuses</h5>
 
-           <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+           <p class="light">Anytime you water your plant or notice changes like dead leaves update its status to save a record to help you decide on making changes to its care instruction.</p>
          </div>
        </div>
 
        <div class="col s12 m4">
          <div class="icon-block">
-           <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
-           <h5 class="center">Easy to work with</h5>
+           <h2 class="center light-green-text"><i class="fa fa-heart fa-2g" aria-hidden="true"></i></h2>
+           <h5 class="center">Discover New Plants</h5>
 
-           <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+           <p class="light">Find the right plants for your home to turn it into a totally tranquil indoor greenhouse to stress less and boost your mood.</p>
          </div>
        </div>
      </div>
@@ -74,9 +74,29 @@
    </div>
    <br><br>
  </div>
+
+ <div class="parallax-container" style="height:500px">
+  <div class="parallax" style="background-color:#000000;"><img src="https://images.pexels.com/photos/631909/pexels-photo-631909.jpeg?w=1260&h=750&dpr=3&auto=compress&cs=tinysrgb" style="opacity: 0.9; filter:blur(1px);"></div>
+    <container>
+      <section style="margin-top:80px;">
+        <div class="row">
+         <div class="col s8 offset-s2">
+           <br>
+           <h2 class="title white-text">Your Greenthumb Has Arrived...</h2>
+           <h6 class="title white-text" style="padding:10px;">
+          <a href="/signup" class="waves-effect waves-light btn-large  deep-orange lighten-1 pulse"  style="margin:10px;">Signup</a>
+           OR
+           <a href="/login" class="waves-effect waves-light btn-large cyan darken-1"  style="margin:10px;">Login</a></h6>
+         </div>
+       </div>
+     </section>
+   </container>
+ </div>
 <script>
 $(document).ready(function(){
   $('.slider').slider({full_width: true});
   $('.slider').slider({height: 600});
+  $('.parallax').parallax();
+
 });
 </script>

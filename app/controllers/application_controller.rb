@@ -109,7 +109,7 @@ class ApplicationController < Sinatra::Base
             redirect to :"/plants/#{@plant.id}"
           end
           # session.delete(:errors)
-          redirect to :"/plants/greenhouse"
+          redirect to :"/greenhouse"
         else
           redirect to :"/plants/new"
           # instruction = Instruction.create(water_amt: params[:plant][:instructions][:water_amt], water_amt_unit: params[:plant][:instructions][:water_amt_unit], water_freq: params[:plant][:instructions][:water_freq], water_freq_unit: params[:plant][:instructions][:water_freq_unit])
