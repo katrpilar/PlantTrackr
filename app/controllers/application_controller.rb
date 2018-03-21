@@ -42,6 +42,7 @@ class ApplicationController < Sinatra::Base
       @user = User.new(username: params[:username], email: params[:email], password: params[:password])
       if @user.save
         session[:user_id] = @user.id
+        binding.pry
         redirect to '/plants'
       else
         redirect to '/signup'
@@ -100,13 +101,11 @@ class ApplicationController < Sinatra::Base
         @status = Status.create(event: params[:plant][:statuses][:event], event_date: params[:plant][:statuses][:event_date], soil_status: params[:plant][:statuses][:soil_status], leaf_status: params[:plant][:statuses][:leaf_status])
       end
       if @plant.valid?
-        # @plant = Plant.new(name: params[:plant][:name], picture: params[:plant][:picture], sunlight: params[:plant][:sunlight], soil: params[:plant][:soil], container_size: params[:plant][:container], drainage: params[:plant][:drainage])
         @plant.user = User.find_by_id(session[:user_id])
         @plant.save
         if @instruction.valid?
           @instruction.plant = @plant
           @instruction.save
-          # binding.pry
           if !!@status
             @status.plant = @plant
             @status.save
@@ -117,31 +116,17 @@ class ApplicationController < Sinatra::Base
           @plant.delete
           redirect to :"/plants/new"
         end
-          # session.delete(:errors)
           redirect to :"/greenhouse"
       else
         @plant.delete
         redirect to :"/plants/new"
-          # instruction = Instruction.create(water_amt: params[:plant][:instructions][:water_amt], water_amt_unit: params[:plant][:instructions][:water_amt_unit], water_freq: params[:plant][:instructions][:water_freq], water_freq_unit: params[:plant][:instructions][:water_freq_unit])
-          # instruction.errors.messages
+
       end
-      # else
-      #   # p = Plant.create(name: params[:plant][:name], picture: params[:plant][:picture], sunlight: params[:plant][:sunlight], soil: params[:plant][:soil], container_size: params[:plant][:container], drainage: params[:plant][:drainage])
-      #   # p.errors.full_messages
-      #   # "#{p.errors.messages}"
-      #   # p.errors.messages.each{|key,value|
-      #   #   session[:errors][:key] = value[0]
-      #   # }
-      #   # session[:errors] = p.errors.messages
-      #
-      #   redirect to :"/plants/new"
-      # end
     else
       redirect to '/login'
     end
   end
 
-  #copy plant is copying the same plant repeatedly
   post '/plants/:id/copy' do
     @oldplant = Plant.find_by_id(params[:id])
     @plant = @oldplant.dup

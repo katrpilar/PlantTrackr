@@ -134,12 +134,9 @@
 <div class="center-align">
       <form id="deleteplant" action="/plants/<%=@plant.id%>/delete" method="post">
         <input id="hidden" type="hidden" name="_method" value="delete">
-        <!-- <input type="submit" value="Delete Plant" id="delete"> -->
-
         <button class="btn-flat btn-large waves-effect tooltipped" type="submit" name="action" data-position="top" data-delay="50" data-tooltip="Delete Plant">
             <i class="material-icons">delete_forever</i>
         </button>
-        <!-- <a class="btn-flat btn-large tooltipped" type="submit" data-position="top" data-delay="50" data-tooltip="Delete Plant"><i class="medium material-icons">delete_forever</i></a> -->
         <a href="/plants/<%=@plant.id%>/edit" class="btn-flat btn-large tooltipped" data-position="top" data-delay="50" data-tooltip="Edit Plant"><i class="medium material-icons">edit</i></a>
       </form>
 </div>
