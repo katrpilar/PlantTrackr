@@ -28,7 +28,7 @@
       <img class="circle responsive-img" src="<%=@plant.picture%>" style="margin-top:50px;"><h4 class="header center-align" style="color:#00acc1; margin-top:25px;"><%=@plant.name%></h4>
         <%if session[:user_id] == @plant.user_id%>
         <div class="center-align">
-          <button class="btn-large waves-effect waves-light deep-orange lighten-1 modal-trigger" data-target="statusmodal">Status Update
+          <button class="btn-large waves-effect waves-light deep-orange lighten-1 modal-trigger pulse" data-target="statusmodal">Status Update
               <i class="material-icons right">add</i>
           </button>
         </div>
@@ -103,15 +103,15 @@
 
       <%case statevent
         when "Watered"%>
-          <%staticon = "<i class='fa fa-tint circle' ></i>"%>
+          <%staticon = "<i class='fa fa-tint circle fa-2g' style='background-color:teal;'></i>"%>
         <%when "Pruned"
-          staticon = "<i class='material-icons circle'>content_cut</i>"%>
+          staticon = "<i class='medium material-icons circle' style='background-color:green;'>content_cut</i>"%>
         <%when "Move to More Sun"
-          staticon = "<i class='material-icons circle'>wb_sunny</i>"%>
+          staticon = "<i class='medium material-icons circle' style='background-color:orange;'>wb_sunny</i>"%>
         <%when "Moved to Less Sun"
-          staticon = "<i class='material-icons circle'>wb_cloudy</i>"%>
+          staticon = "<i class='medium material-icons circle'>wb_cloudy</i>"%>
         <%when "Repotted"
-          staticon = "<i class='fa fa-archive circle'></i>"%>
+          staticon = "<i class='fa fa-archive fa-2g circle' style='background-color:purple;'></i>"%>
       <%end%>
       <li class="collection-item avatar">
         <%= staticon%>
@@ -119,10 +119,10 @@
         <p><i><%=stat.event_date%></i></p>
         <p>Soil: <%=stat.soil_status%></p>
         <p>Foliage: <%=stat.leaf_status%></p>
-        <a href="#" class="secondary-content"><i class="material-icons" onclick="document.getElementById('deletestatus').submit();">delete</i></a>
+        <a href="#" class="secondary-content"><i class="material-icons" onclick="document.getElementById('deletestatus-<%=stat.id%>').submit();">delete</i></a>
       </li>
 
-      <form id="deletestatus" action="/plants/statuses/<%=stat.id%>/delete" method="post" style="display:none !important;">
+      <form id="deletestatus-<%=stat.id%>" action="/plants/statuses/<%=stat.id%>/delete" method="post" style="display:none !important;">
         <input id="hidden" type="hidden" name="_method" value="delete">
         <input type="submit" value="Delete" id="delete">
       </form>
