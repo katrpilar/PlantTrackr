@@ -39,38 +39,38 @@
                 <%drain = @plant.drainage%>
                 <h6 style="color:#00acc1;">Sunlight Needs</h6>
                 <p>
-                <input name="plant[sunlight]" type="radio" id="sunlight_low" value="Low" <%='checked' if (sun == 'Low')%>/>
+                <input name="plant[sunlight]" type="radio" id="sunlight_low" value="Low" <%='checked' if (sun == 'Low')%> required/>
                 <label for="sunlight_low">Low</label>
               </p>
                 <p>
-                <input name="plant[sunlight]" type="radio" id="sunlight_med" value="Medium" <%='checked' if (sun == 'Medium')%>/>
+                <input name="plant[sunlight]" type="radio" id="sunlight_med" value="Medium" <%='checked' if (sun == 'Medium')%> required/>
                 <label for="sunlight_med">Medium</label>
               </p>
                 <p>
-                <input name="plant[sunlight]" type="radio" id="sunlight_high" value="High" <%='checked' if (sun == 'High')%>/>
+                <input name="plant[sunlight]" type="radio" id="sunlight_high" value="High" <%='checked' if (sun == 'High')%> required/>
                 <label for="sunlight_high">High</label>
               </p>
               </div>
               <div class="col s3">
                 <h6 style="color:#00acc1;">Soil Type</h6>
                 <p>
-                  <input name="plant[soil]" type="radio" id="soil-clay" value="Clay" <%='checked' if (dirt == 'Clay')%>/>
+                  <input name="plant[soil]" type="radio" id="soil-clay" value="Clay" <%='checked' if (dirt == 'Clay')%> required/>
                   <label for="soil-clay">Clay</label>
                 </p>
                 <p>
-                  <input name="plant[soil]" type="radio" id="soil-silt" value="Silt" <%='checked' if (dirt == 'Silt')%>/>
+                  <input name="plant[soil]" type="radio" id="soil-silt" value="Silt" <%='checked' if (dirt == 'Silt')%> required/>
                   <label for="soil-silt">Silt</label>
                 </p>
                 <p>
-                  <input name="plant[soil]" type="radio" id="soil-peaty" value="Peaty" <%='checked' if (dirt == 'Peaty')%>/>
+                  <input name="plant[soil]" type="radio" id="soil-peaty" value="Peaty" <%='checked' if (dirt == 'Peaty')%> required/>
                   <label for="soil-peaty">Peaty</label>
                 </p>
                 <p>
-                  <input name="plant[soil]" type="radio" id="soil-loam" value="Loam" <%='checked' if (dirt == 'Loam')%>/>
+                  <input name="plant[soil]" type="radio" id="soil-loam" value="Loam" <%='checked' if (dirt == 'Loam')%> required/>
                   <label for="soil-loam">Loam</label>
                 </p>
                 <p>
-                  <input name="plant[soil]" type="radio" id="soil-chalky" value="Chalky" <%='checked' if (dirt == 'Chalky')%>/>
+                  <input name="plant[soil]" type="radio" id="soil-chalky" value="Chalky" <%='checked' if (dirt == 'Chalky')%> required/>
                   <label for="soil-chalky">Chalky</label>
                 </p>
               </div>
@@ -78,19 +78,19 @@
               <div class="col s3">
                 <h6 style="color:#00acc1;">Container Size</h6>
                 <p>
-                  <input name="plant[container]" type="radio" id="container-xs" value="Extra Small" <%='checked' if (pot == 'Extra Small')%>/>
+                  <input name="plant[container]" type="radio" id="container-xs" value="Extra Small" <%='checked' if (pot == 'Extra Small')%> required/>
                   <label for="container-xs">Extra Small</label>
                 </p>
                 <p>
-                  <input name="plant[container]" type="radio" id="container-sm" value="Small" <%='checked' if (pot == 'Small')%>/>
+                  <input name="plant[container]" type="radio" id="container-sm" value="Small" <%='checked' if (pot == 'Small')%> required/>
                   <label for="container-sm">Small</label>
                 </p>
                 <p>
-                  <input name="plant[container]" type="radio" id="container-med" value="Medium" <%='checked' if (pot == 'Medium')%>/>
+                  <input name="plant[container]" type="radio" id="container-med" value="Medium" <%='checked' if (pot == 'Medium')%> required/>
                   <label for="container-med">Medium</label>
                 </p>
                 <p>
-                  <input name="plant[container]" type="radio" id="container-lg" value="Large" <%='checked' if (pot == 'Large')%>/>
+                  <input name="plant[container]" type="radio" id="container-lg" value="Large" <%='checked' if (pot == 'Large')%> required/>
                   <label for="container-lg">Large</label>
                 </p>
               </div>
@@ -98,19 +98,19 @@
               <div class="col s3">
                 <h6 style="color:#00acc1;">Soil Drainage Needs</h6>
                 <p>
-                  <input name="plant[drainage]" type="radio" id="drainage-low" value="Low" <%='checked' if (drain == 'Low')%>/>
+                  <input name="plant[drainage]" type="radio" id="drainage-low" value="Low" <%='checked' if (drain == 'Low')%> required/>
                   <label for="drainage-low">Low</label>
                 </p>
                 <p>
-                  <input name="plant[drainage]" type="radio" id="drainage-med" value="Medium" <%='checked' if (drain == 'Medium')%>/>
+                  <input name="plant[drainage]" type="radio" id="drainage-med" value="Medium" <%='checked' if (drain == 'Medium')%> required/>
                   <label for="drainage-med">Medium</label>
                 </p>
                 <p>
-                  <input name="plant[drainage]" type="radio" id="drainage-high" value="High" <%='checked' if (drain == 'High')%>/>
+                  <input name="plant[drainage]" type="radio" id="drainage-high" value="High" <%='checked' if (drain == 'High')%> required/>
                   <label for="drainage-high">High</label>
                 </p>
                 <p>
-                  <input name="plant[drainage]" type="radio" id="drainage-very-high" value="Very High" <%='checked' if (drain == 'Very High')%>/>
+                  <input name="plant[drainage]" type="radio" id="drainage-very-high" value="Very High" <%='checked' if (drain == 'Very High')%> required/>
                   <label for="drainage-very-high">Very High</label>
                 </p>
               </div>
