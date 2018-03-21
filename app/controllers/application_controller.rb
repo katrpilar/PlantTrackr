@@ -46,6 +46,9 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/plants/new' do
+    if !!session[:errors]
+      @planterrors = session[:errors]
+    end
     if logged_in?
       erb :'/plants/create_plant'
     else
@@ -91,29 +94,37 @@ class ApplicationController < Sinatra::Base
         @plant = Plant.create(name: params[:plant][:name], picture: params[:plant][:picture], sunlight: params[:plant][:sunlight], soil: params[:plant][:soil], container_size: params[:plant][:container], drainage: params[:plant][:drainage])
         @plant.user = User.find_by_id(session[:user_id])
         @plant.save
-        if Instruction.create(water_amt: params[:plant][:instructions][:water_amt], water_amt_unit: params[:plant][:instructions][:water_amt_unit], water_freq: params[:plant][:instructions][:water_freq], water_freq_unit: params[:plant][:instructions][:water_freq_unit]).valid?
-          @instruction = Instruction.create(water_amt: params[:plant][:instructions][:water_amt], water_amt_unit: params[:plant][:instructions][:water_amt_unit], water_freq: params[:plant][:instructions][:water_freq], water_freq_unit: params[:plant][:instructions][:water_freq_unit])
-          @instruction.plant = @plant
-          @instruction.save
-        else
-          instruction = Instruction.create(water_amt: params[:plant][:instructions][:water_amt], water_amt_unit: params[:plant][:instructions][:water_amt_unit], water_freq: params[:plant][:instructions][:water_freq], water_freq_unit: params[:plant][:instructions][:water_freq_unit])
-          instruction.errors
-        end
-      else
-        p = Plant.create(name: params[:plant][:name], picture: params[:plant][:picture], sunlight: params[:plant][:sunlight], soil: params[:plant][:soil], container_size: params[:plant][:container], drainage: params[:plant][:drainage])
-        p.errors
-      end
-
-      if params[:plant][:statuses][:event] != "" && params[:plant][:statuses][:event_date] != "" && params[:plant][:statuses][:soil_status] != "" && params[:plant][:statuses][:leaf_status] != ""
-        @status = Status.create(event: params[:plant][:statuses][:event], event_date: params[:plant][:statuses][:event_date], soil_status: params[:plant][:statuses][:soil_status], leaf_status: params[:plant][:statuses][:leaf_status])
-        @status.plant = @plant
-        @status.save
-      end
-      if @plant.save
+        # if Instruction.create(water_amt: params[:plant][:instructions][:water_amt], water_amt_unit: params[:plant][:instructions][:water_amt_unit], water_freq: params[:plant][:instructions][:water_freq], water_freq_unit: params[:plant][:instructions][:water_freq_unit]).valid?
+        #   @instruction = Instruction.create(water_amt: params[:plant][:instructions][:water_amt], water_amt_unit: params[:plant][:instructions][:water_amt_unit], water_freq: params[:plant][:instructions][:water_freq], water_freq_unit: params[:plant][:instructions][:water_freq_unit])
+        #   @instruction.plant = @plant
+        #   @instruction.save
+        # else
+        #   instruction = Instruction.create(water_amt: params[:plant][:instructions][:water_amt], water_amt_unit: params[:plant][:instructions][:water_amt_unit], water_freq: params[:plant][:instructions][:water_freq], water_freq_unit: params[:plant][:instructions][:water_freq_unit])
+        #   instruction.errors
+        # end
+        session.delete(:errors)
         redirect to :"/plants/#{@plant.id}"
       else
-        redirect to :'/plants/new'
+        p = Plant.create(name: params[:plant][:name], picture: params[:plant][:picture], sunlight: params[:plant][:sunlight], soil: params[:plant][:soil], container_size: params[:plant][:container], drainage: params[:plant][:drainage])
+        # p.errors.full_messages
+      # "#{p.errors.messages}"
+        p.errors.messages.each{|key,value|
+          session[:errors][key] = value
+        }
+
+        redirect to :"/plants/new"
       end
+
+      # if params[:plant][:statuses][:event] != "" && params[:plant][:statuses][:event_date] != "" && params[:plant][:statuses][:soil_status] != "" && params[:plant][:statuses][:leaf_status] != ""
+      #   @status = Status.create(event: params[:plant][:statuses][:event], event_date: params[:plant][:statuses][:event_date], soil_status: params[:plant][:statuses][:soil_status], leaf_status: params[:plant][:statuses][:leaf_status])
+      #   @status.plant = @plant
+      #   @status.save
+      # end
+      # if @plant.save
+      #   redirect to :"/plants/#{@plant.id}"
+      # else
+      #   redirect to :'/plants/new'
+      # end
     else
       redirect to '/login'
     end

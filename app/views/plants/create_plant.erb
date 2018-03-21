@@ -13,6 +13,14 @@
 <section>
   <div class="row">
    <div class="col s8 offset-s2">
+      <%if !!@planterrors%>
+        <h6>Errors:</h6>
+        <ul>
+          <%@planterrors.each do |k,v|%>
+            <li><b><%=k.to_s%></b>: <%=v%></li>
+          <%end%>
+        </ul>
+      <%end%>
       <h4 class="header center-align" style="color:#00acc1; margin-top:50px;">Add a New Plant</h4>
       <div class="row">
           <form id="newplant" action="/plants" class="col s12" method="POST">
