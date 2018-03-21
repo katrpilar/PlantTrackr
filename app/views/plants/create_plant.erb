@@ -26,7 +26,7 @@
           <form id="newplant" action="/plants" class="col s12" method="POST">
             <div class="row">
               <div class="input-field col s12">
-                <input id="name" type="text" name="plant[name]">
+                <input id="name" type="text" name="plant[name]" required>
                 <label for="name">Plant Name</label>
               </div>
             </div>
@@ -38,7 +38,7 @@
             </div>
 
             <div class="row">
-              <div class="col s3">
+              <div class="col s12 m3">
                 <h6 style="color:#00acc1;">Sunlight Needs</h6>
                 <p>
                 <input name="plant[sunlight]" type="radio" id="sunlight_low" value="Low" required/>
@@ -53,11 +53,11 @@
                 <label for="sunlight_high">High</label>
               </p>
               </div>
-              <div class="col s3">
+              <div class="col s12 m3">
                 <h6 style="color:#00acc1;">Soil Type</h6>
                 <p>
                   <input name="plant[soil]" type="radio" id="soil-clay" value="Clay" required/>
-                  <label for="soil-clay">Clay</label>
+                  <label class="tooltipped" data-position="right" data-delay="50" data-tooltip="Very small particles, good water retention, heavy. Sticky to the touch when wet, but smooth when dry." for="soil-clay">Clay</label>
                 </p>
                 <p>
                   <input name="plant[soil]" type="radio" id="soil-silt" value="Silt" required/>
@@ -75,9 +75,17 @@
                   <input name="plant[soil]" type="radio" id="soil-chalky" value="Chalky" required/>
                   <label for="soil-chalky">Chalky</label>
                 </p>
+                <p>
+                  <input name="plant[soil]" type="radio" id="soil-sandy" value="Sandy" required/>
+                  <label for="soil-sandy">Sandy</label>
+                </p>
+                <p>
+                  <input name="plant[soil]" type="radio" id="soil-rocky" value="Rocky" required/>
+                  <label for="soil-rocky">Rocky</label>
+                </p>
               </div>
 
-              <div class="col s3">
+              <div class="col s12 m3">
                 <h6 style="color:#00acc1;">Container Size</h6>
                 <p>
                   <input name="plant[container]" type="radio" id="container-xs" value="Extra Small" required/>
@@ -95,9 +103,13 @@
                   <input name="plant[container]" type="radio" id="container-lg" value="Large" required/>
                   <label for="container-lg">Large</label>
                 </p>
+                <p>
+                  <input name="plant[container]" type="radio" id="container-xl" value="Extra Large" required/>
+                  <label for="container-xl">Extra Large</label>
+                </p>
               </div>
 
-              <div class="col s3">
+              <div class="col s12 m3">
                 <h6 style="color:#00acc1;">Soil Drainage Needs</h6>
                 <p>
                   <input name="plant[drainage]" type="radio" id="drainage-low" value="Low"  required/>
@@ -189,10 +201,10 @@
                <h4 class="header center-align" style="color:#00acc1; margin-top:50px;">Add care instructions</h4>
                <div class="row">
                  <div class="input-field col s4">
-                   <input id="water-amt" type="text" name="plant[instructions][water_amt]">
+                   <input id="water-amt" type="number" name="plant[instructions][water_amt]" required>
                    <label for="water-amt">Water Amount</label>
                  </div>
-                 <div class="input-field col s8">
+                 <div class="input-field col s8 m12">
                  <select name="plant[instructions][water_amt_unit]" form="newplant" required>
                    <option value="" disabled selected>Unit of Water</option>
                    <option value="Spritz">Spritz</option>
@@ -208,11 +220,11 @@
                </div>
 
                <div class="row">
-                 <div class="input-field col s4">
-                   <input id="water-freq" type="text" name="plant[instructions][water_freq]" required>
+                 <div class="input-field col s4 m12">
+                   <input id="water-freq" type="number" name="plant[instructions][water_freq]" required>
                    <label for="water-freq">Water Frequency</label>
                  </div>
-                 <div class="input-field col s8">
+                 <div class="input-field col s8 m12">
                  <select name="plant[instructions][water_freq_unit]" form="newplant" required>
                    <option value="" disabled selected>Frequency Unit</option>
                    <option value="Day(s)">Day(s)</option>

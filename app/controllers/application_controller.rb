@@ -94,40 +94,34 @@ class ApplicationController < Sinatra::Base
         @plant = Plant.create(name: params[:plant][:name], picture: params[:plant][:picture], sunlight: params[:plant][:sunlight], soil: params[:plant][:soil], container_size: params[:plant][:container], drainage: params[:plant][:drainage])
         @plant.user = User.find_by_id(session[:user_id])
         @plant.save
-        # if Instruction.create(water_amt: params[:plant][:instructions][:water_amt], water_amt_unit: params[:plant][:instructions][:water_amt_unit], water_freq: params[:plant][:instructions][:water_freq], water_freq_unit: params[:plant][:instructions][:water_freq_unit]).valid?
-        #   @instruction = Instruction.create(water_amt: params[:plant][:instructions][:water_amt], water_amt_unit: params[:plant][:instructions][:water_amt_unit], water_freq: params[:plant][:instructions][:water_freq], water_freq_unit: params[:plant][:instructions][:water_freq_unit])
-        #   @instruction.plant = @plant
-        #   @instruction.save
-        # else
-        #   instruction = Instruction.create(water_amt: params[:plant][:instructions][:water_amt], water_amt_unit: params[:plant][:instructions][:water_amt_unit], water_freq: params[:plant][:instructions][:water_freq], water_freq_unit: params[:plant][:instructions][:water_freq_unit])
-        #   instruction.errors
-        # end
-        session.delete(:errors)
-        redirect to :"/plants/#{@plant.id}"
+        if Instruction.create(water_amt: params[:plant][:instructions][:water_amt], water_amt_unit: params[:plant][:instructions][:water_amt_unit], water_freq: params[:plant][:instructions][:water_freq], water_freq_unit: params[:plant][:instructions][:water_freq_unit]).valid?
+          @instruction = Instruction.create(water_amt: params[:plant][:instructions][:water_amt], water_amt_unit: params[:plant][:instructions][:water_amt_unit], water_freq: params[:plant][:instructions][:water_freq], water_freq_unit: params[:plant][:instructions][:water_freq_unit])
+          @instruction.plant = @plant
+          @instruction.save
+          if params[:plant][:statuses][:event] != "" && params[:plant][:statuses][:event_date] != "" && params[:plant][:statuses][:soil_status] != "" && params[:plant][:statuses][:leaf_status] != ""
+            @status = Status.create(event: params[:plant][:statuses][:event], event_date: params[:plant][:statuses][:event_date], soil_status: params[:plant][:statuses][:soil_status], leaf_status: params[:plant][:statuses][:leaf_status])
+            @status.plant = @plant
+            @status.save
+            redirect to :"/plants/#{@plant.id}"
+          end
+          # session.delete(:errors)
+          redirect to :"/plants/greenhouse"
+        else
+          redirect to :"/plants/new"
+          # instruction = Instruction.create(water_amt: params[:plant][:instructions][:water_amt], water_amt_unit: params[:plant][:instructions][:water_amt_unit], water_freq: params[:plant][:instructions][:water_freq], water_freq_unit: params[:plant][:instructions][:water_freq_unit])
+          # instruction.errors.messages
+        end
       else
-        p = Plant.create(name: params[:plant][:name], picture: params[:plant][:picture], sunlight: params[:plant][:sunlight], soil: params[:plant][:soil], container_size: params[:plant][:container], drainage: params[:plant][:drainage])
+        # p = Plant.create(name: params[:plant][:name], picture: params[:plant][:picture], sunlight: params[:plant][:sunlight], soil: params[:plant][:soil], container_size: params[:plant][:container], drainage: params[:plant][:drainage])
         # p.errors.full_messages
-      # "#{p.errors.messages}"
-        # binding.pry
+        # "#{p.errors.messages}"
         # p.errors.messages.each{|key,value|
         #   session[:errors][:key] = value[0]
         # }
-
-        session[:errors] = p.errors.messages
+        # session[:errors] = p.errors.messages
 
         redirect to :"/plants/new"
       end
-
-      # if params[:plant][:statuses][:event] != "" && params[:plant][:statuses][:event_date] != "" && params[:plant][:statuses][:soil_status] != "" && params[:plant][:statuses][:leaf_status] != ""
-      #   @status = Status.create(event: params[:plant][:statuses][:event], event_date: params[:plant][:statuses][:event_date], soil_status: params[:plant][:statuses][:soil_status], leaf_status: params[:plant][:statuses][:leaf_status])
-      #   @status.plant = @plant
-      #   @status.save
-      # end
-      # if @plant.save
-      #   redirect to :"/plants/#{@plant.id}"
-      # else
-      #   redirect to :'/plants/new'
-      # end
     else
       redirect to '/login'
     end
