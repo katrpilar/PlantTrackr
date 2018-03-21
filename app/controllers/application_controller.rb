@@ -108,9 +108,12 @@ class ApplicationController < Sinatra::Base
         p = Plant.create(name: params[:plant][:name], picture: params[:plant][:picture], sunlight: params[:plant][:sunlight], soil: params[:plant][:soil], container_size: params[:plant][:container], drainage: params[:plant][:drainage])
         # p.errors.full_messages
       # "#{p.errors.messages}"
-        p.errors.messages.each{|key,value|
-          session[:errors][key] = value
-        }
+        # binding.pry
+        # p.errors.messages.each{|key,value|
+        #   session[:errors][:key] = value[0]
+        # }
+
+        session[:errors] = p.errors.messages
 
         redirect to :"/plants/new"
       end
