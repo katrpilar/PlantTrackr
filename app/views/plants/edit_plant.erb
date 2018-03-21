@@ -1,6 +1,6 @@
 <nav>
    <div class="nav-wrapper green darken-1">
-     <a href="/" class="brand-logo">PlantTrack</a>
+     <a href="/" class="brand-logo">PlantTrackr</a>
      <ul class="right hide-on-med-and-down">
        <li><a href="/plants">Browse</a></li>
        <li><a href="/greenhouse">My Plants</a></li>
@@ -19,7 +19,7 @@
         <input id="hidden" type="hidden" name="_method" value="patch" for="editplant">
             <div class="row">
               <div class="input-field col s12">
-                <input id="name" type="text" name="plant[name]" value="<%=@plant.name%>">
+                <input id="name" type="text" name="plant[name]" value="<%=@plant.name%>" required>
                 <label for="name">Plant Name</label>
               </div>
             </div>
@@ -37,7 +37,7 @@
                 <%dirt = @plant.soil%>
                 <%pot = @plant.container_size%>
                 <%drain = @plant.drainage%>
-                <h6 style="color:#00acc1;">Sunlight Needs</h6>
+                <h6 class="flow-text" style="color:#00acc1;">Sunlight Needs</h6>
                 <p>
                 <input name="plant[sunlight]" type="radio" id="sunlight_low" value="Low" <%='checked' if (sun == 'Low')%> required/>
                 <label for="sunlight_low">Low</label>
@@ -52,7 +52,7 @@
               </p>
               </div>
               <div class="col s12 m3">
-                <h6 style="color:#00acc1;">Soil Type</h6>
+                <h6 class="flow-text" style="color:#00acc1;">Soil Type</h6>
                 <p>
                   <input name="plant[soil]" type="radio" id="soil-clay" value="Clay" <%='checked' if (dirt == 'Clay')%> required/>
                   <label for="soil-clay">Clay</label>
@@ -74,17 +74,17 @@
                   <label for="soil-chalky">Chalky</label>
                 </p>
                 <p>
-                  <input name="plant[soil]" type="radio" id="soil-sandy" value="Sandy" required/>
+                  <input name="plant[soil]" type="radio" id="soil-sandy" value="Sandy" <%='checked' if (dirt == 'Sandy')%> required/>
                   <label for="soil-sandy">Sandy</label>
                 </p>
                 <p>
-                  <input name="plant[soil]" type="radio" id="soil-rocky" value="Rocky" required/>
+                  <input name="plant[soil]" type="radio" id="soil-rocky" value="Rocky" <%='checked' if (dirt == 'Rocky')%> required/>
                   <label for="soil-rocky">Rocky</label>
                 </p>
               </div>
 
               <div class="col s12 m3">
-                <h6 style="color:#00acc1;">Container Size</h6>
+                <h6 class="flow-text" style="color:#00acc1;">Container Size</h6>
                 <p>
                   <input name="plant[container]" type="radio" id="container-xs" value="Extra Small" <%='checked' if (pot == 'Extra Small')%> required/>
                   <label for="container-xs">Extra Small</label>
@@ -102,13 +102,13 @@
                   <label for="container-lg">Large</label>
                 </p>
                 <p>
-                  <input name="plant[container]" type="radio" id="container-xl" value="Extra Large" required/>
+                  <input name="plant[container]" type="radio" id="container-xl" value="Extra Large" <%='checked' if (pot == 'Extra Large')%> required/>
                   <label for="container-xl">Extra Large</label>
                 </p>
               </div>
 
               <div class="col s12 m3">
-                <h6 style="color:#00acc1;">Soil Drainage Needs</h6>
+                <h6 class="flow-text" style="color:#00acc1;">Soil Drainage Needs</h6>
                 <p>
                   <input name="plant[drainage]" type="radio" id="drainage-low" value="Low" <%='checked' if (drain == 'Low')%> required/>
                   <label for="drainage-low">Low</label>
@@ -137,11 +137,11 @@
    <div class="col s8 offset-s2">
      <h4 class="header center-align" style="color:#00acc1; margin-top:50px;">Edit care instructions</h4>
      <div class="row">
-       <div class="input-field col s4 m12">
+       <div class="input-field col m4 s12">
          <input id="water-amt" type="text" name="plant[instructions][water_amt]" value="<%=@plant.instructions.last[:water_amt]%>">
          <label for="water-amt">Water Amount</label>
        </div>
-       <div class="input-field col s8 m12">
+       <div class="input-field col m8 s12">
          <%unit = @plant.instructions.last[:water_amt_unit]%>
        <select id="liquid" name="plant[instructions][water_amt_unit]" form="editplant">
          <option value="" disabled selected>Unit of Water</option>
@@ -158,11 +158,11 @@
      </div>
 
      <div class="row">
-       <div class="input-field col s4 m12">
+       <div class="input-field col m4 s12">
          <input id="water-freq" type="text" name="plant[instructions][water_freq]" value="<%=@plant.instructions.last[:water_freq]%>">
          <label for="water-freq">Water Frequency</label>
        </div>
-       <div class="input-field col s8 m12">
+       <div class="input-field col m8 s12">
          <%pfreq = @plant.instructions.last[:water_freq_unit]%>
        <select name="plant[instructions][water_freq_unit]" form="editplant">
          <option value="" disabled selected>Frequency Unit</option>

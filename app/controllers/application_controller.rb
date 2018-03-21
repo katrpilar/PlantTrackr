@@ -17,7 +17,11 @@ class ApplicationController < Sinatra::Base
     @user = User.find_by_id(session[:user_id])
     @plants = Plant.all
     if logged_in?
-      erb :'/plants/plants'
+      if !!@plants
+        erb :'/plants/plants'
+      else
+        redirect :'/plants/new'
+      end
     else
       redirect :'/login'
     end
