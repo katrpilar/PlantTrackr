@@ -26,7 +26,7 @@
             <div class="row">
               <div class="input-field col s12">
                 <img class="circle responsive-img" src="<%=@plant.picture%>" style="height:200px;">
-                <input id="picture" type="text" name="plant[picture]" value="<%=@plant.picture%>">
+                <input id="picture" type="url" name="plant[picture]" value="<%=@plant.picture%>" required>
                 <label for="picture">Photo Url</label>
               </div>
             </div>
@@ -138,7 +138,7 @@
      <h4 class="header center-align" style="color:#00acc1; margin-top:50px;">Edit care instructions</h4>
      <div class="row">
        <div class="input-field col m4 s12">
-         <input id="water-amt" type="text" name="plant[instructions][water_amt]" value="<%=@plant.instructions.last[:water_amt]%>">
+         <input id="water-amt" type="number" name="plant[instructions][water_amt]" value="<%=@plant.instructions.last[:water_amt]%>">
          <label for="water-amt">Water Amount</label>
        </div>
        <div class="input-field col m8 s12">
@@ -159,7 +159,7 @@
 
      <div class="row">
        <div class="input-field col m4 s12">
-         <input id="water-freq" type="text" name="plant[instructions][water_freq]" value="<%=@plant.instructions.last[:water_freq]%>">
+         <input id="water-freq" type="number" name="plant[instructions][water_freq]" value="<%=@plant.instructions.last[:water_freq]%>">
          <label for="water-freq">Water Frequency</label>
        </div>
        <div class="input-field col m8 s12">
@@ -178,16 +178,25 @@
 </section>
 
       <div class="row" style="height:200px;">
-        <div class="input-field col offset-s5" style="margin-top:5S0px;">
+        <div class="input-field col s6 offset-s3" style="margin-top:5S0px;">
+          <div class="center-align">
           <button class="btn-large waves-effect waves-light deep-orange lighten-1" type="submit" name="action">Update</button>
         </div>
+        </div>
+        </form>
+        <br><br>
+        <div class="input-field col s6 offset-s3" style="margin-top:5px;">
+          <div class="center-align">
+            <br><h6>OR</h6>
+          <form id="deleteplant" action="/plants/<%=@plant.id%>/delete" method="post" >
+            <input id="hidden" type="hidden" name="_method" value="delete">
+            <button class="btn-flat btn-large waves-effect tooltipped" type="submit" name="action" data-position="bottom" data-delay="50" data-tooltip="Delete Plant" style="margin-bottom:40px;">
+                <i class="material-icons">delete_forever</i>
+            </button>
+          </form>
+        </div>
+        </div>
       </div>
-    </form>
-
-    <form action="/plants/<%=@plant.id%>/delete" method="post">
-      <input id="hidden" type="hidden" name="_method" value="delete">
-      <button type="submit" value="Delete Tweet" name="Delete Plant">Delete Plant</button>
-    </form>
 
 <script>
 $(document).ready(function() {

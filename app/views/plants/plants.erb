@@ -69,7 +69,7 @@
 
                 <div class="card-content">
                   <span class="card-title activator grey-text text-darken-4"><h5><%=plant.name%><i class="small material-icons right">expand_more</i></h5></span>
-                  <p>Created By: <%=User.find_by_id(plant.user_id).username%></p>
+                  <p>Created By: <%if User.find_by_id(plant.user_id)%><%=User.find_by_id(plant.user_id).username%><%end%></p>
                 </div>
                 <div class="card-action">
                   <%plantid = plant.id%><!--deep-orange-text text-lighten-1-->
