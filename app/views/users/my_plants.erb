@@ -20,12 +20,19 @@
 <nav>
    <div class="nav-wrapper green darken-1">
      <a href="/" class="brand-logo">PlantTrackr</a>
+     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
      <ul class="right hide-on-med-and-down">
        <li><a href="/plants">Browse</a></li>
-       <li class="active"><a href="/greenhouse" class="active">My Plants</a></li>
+       <li class="active"><a href="/greenhouse">My Plants</a></li>
        <li><a href="/plants/new">Create Plant</a></li>
        <li><a href="/logout" class="waves-effect waves-light btn light-green darken-4">Logout</a></li>
      </ul>
+     <ul class="side-nav green darken-1" id="mobile-demo">
+        <li><a href="/plants" style="color:white;">Browse</a></li>
+        <li class="active"><a href="/greenhouse" style="color:white;">My Plants</a></li>
+        <li><a href="/plants/new" style="color:white;">Create Plant</a></li>
+        <li><a href="/logout" class="waves-effect waves-light btn light-green darken-4">Logout</a></li>
+      </ul>
    </div>
  </nav>
 
@@ -74,7 +81,7 @@
                     <a href="#" class=" teal-text text-lighten-1"><%=plant.instructions.last.water_amt%> <%=plant.instructions.last.water_amt_unit%> of water every <%=plant.instructions.last.water_freq%> <%=plant.instructions.last.water_freq_unit%></a>
                     </div>
                     <div class="col s4 right-align">
-                      <a class="btn-flat" style="margin-right:5px;padding:0px !important;" onclick="myFunction()"><i class="material-icons right-align">share</i></a>
+                      <a class="btn-flat" style="margin-right:5px;padding:0px !important;" onclick="myFunction()" ><i class="material-icons right-align" style="display:none !important;">share</i></a>
                       <a href="#" class="btn-flat" style="margin-right:5px;padding:0px !important;" onclick="document.getElementById('copyplant-<%=plant.id%>').submit();"><i class="material-icons right-align">content_copy</i></a>
                       <!-- <a class="btn-flat" style="margin-right:5px;padding:0px !important;"><i class="material-icons right-align">favorite_border</i></a> -->
                     </div>
@@ -180,6 +187,7 @@ $(document).ready(function() {
   $('.parallax').parallax();
   $('.carousel').carousel();
   $('.modal').modal();
+  $(".button-collapse").sideNav();
   $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
     selectYears: 15, // Creates a dropdown of 15 years to control year,

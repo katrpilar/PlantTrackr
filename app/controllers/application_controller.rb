@@ -42,7 +42,6 @@ class ApplicationController < Sinatra::Base
       @user = User.new(username: params[:username], email: params[:email], password: params[:password])
       if @user.save
         session[:user_id] = @user.id
-        binding.pry
         redirect to '/plants'
       else
         redirect to '/signup'

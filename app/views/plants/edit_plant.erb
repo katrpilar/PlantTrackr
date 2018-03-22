@@ -1,12 +1,19 @@
 <nav>
    <div class="nav-wrapper green darken-1">
      <a href="/" class="brand-logo">PlantTrackr</a>
+     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
      <ul class="right hide-on-med-and-down">
        <li><a href="/plants">Browse</a></li>
        <li><a href="/greenhouse">My Plants</a></li>
        <li><a href="/plants/new">Create Plant</a></li>
-       <li><a href="/logout" class="waves-effect waves-light btn green darken-1">Logout</a></li>
+       <li><a href="/logout" class="waves-effect waves-light btn light-green darken-4">Logout</a></li>
      </ul>
+     <ul class="side-nav green darken-1" id="mobile-demo">
+        <li><a href="/plants" style="color:white;">Browse</a></li>
+        <li><a href="/greenhouse" style="color:white;">My Plants</a></li>
+        <li><a href="/plants/new" style="color:white;">Create Plant</a></li>
+        <li><a href="/logout" class="waves-effect waves-light btn light-green darken-4">Logout</a></li>
+      </ul>
    </div>
  </nav>
 
@@ -203,6 +210,7 @@ $(document).ready(function() {
   $('select').material_select();
   $('.tooltipped').tooltip({delay: 50});
   $('ul.tabs').tabs();
+  $(".button-collapse").sideNav();
   $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
     selectYears: 15, // Creates a dropdown of 15 years to control year,
