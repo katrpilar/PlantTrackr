@@ -37,8 +37,8 @@ Edit (Not Available for above reason)
 - [x] Include user input validations
 User input validations on all input fields except any form posting to the statuses table.
 Passwords have password validations, emails have email, etc.
-- [ ] Display validation failures to user with error message (example form URL e.g. /posts/new)
-
+- [x] Display validation failures to user with error message (example form URL e.g. /posts/new)
+All required input fields have errors messages on the client side to prevent the user from submiting incomplete data
 - [x] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
 
 Confirm
