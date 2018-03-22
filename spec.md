@@ -12,6 +12,7 @@ Users own and has many Plants. Plants have many Care Instructions. Plants have m
 - [x] Include user accounts
 Users can create accounts, login, and logout
 - [x] Ensure that users can't modify content created by other users
+This is handeled in the controller and within the design users can ONLY duplicate other user's plants.
 - [x] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying
 
 PLANT
@@ -33,9 +34,12 @@ Read '/plants' & '/greenhouse'
 Destroy (Cannot Destroy Instructions for above reason)
 Edit (Not Available for above reason)
 
-- [ ] Include user input validations
+- [x] Include user input validations
+User input validations on all input fields except any form posting to the statuses table.
+Passwords have password validations, emails have email, etc.
 - [ ] Display validation failures to user with error message (example form URL e.g. /posts/new)
-- [ ] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
+
+- [x] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
 
 Confirm
 - [x] You have a large number of small Git commits
