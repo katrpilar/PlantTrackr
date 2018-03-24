@@ -60,7 +60,7 @@
                       </a>
                       <ul>
                         <li class="waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Journal"><a href="/plants/<%=plant.id%>"><i class="material-icons">event_note</i></a></li>
-                        <li class="waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="New Status"><a class="modal-trigger" data-target="statusmodal"><i class="material-icons">playlist_add</i></a></li>
+                        <li class="waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="New Status"><a class="modal-trigger" data-target="statusmodal-<%=plant.id%>"><i class="material-icons">playlist_add</i></a></li>
                         <li class="waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"><a href="/plants/<%=plant.id%>/edit"><i class="material-icons">edit</i></a></li>
                         <li class="waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Copy"><a href="#" onclick="document.getElementById('copyplant-<%=plant.id%>').submit();"><i class="material-icons">content_copy</i></a></li>
                           <li class="waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Delete"><a href="#" onclick="document.getElementById('deleteplant-<%=plant.id%>').submit();"><i class="material-icons">delete_forever</i></a></li>
@@ -124,13 +124,13 @@
           </div>
 
           <!-- The create a new status popup for the plant when click on New Status Icon from toolbar -->
-          <div id="statusmodal" class="modal modal-fixed-footer">
-           <form id="newplant" action="/<%=plant.id%>/statuses" method="POST">
+          <div id="statusmodal-<%=plant.id%>" class="modal modal-fixed-footer">
+           <form id="newplant-<%=plant.id%>" action="/<%=plant.id%>/statuses" method="POST">
            <div class="modal-content">
                   <h5 class="center-align"><i class="fa fa-pagelines fa-2x" aria-hidden="true" style="color:#00acc1;"></i></h5>
                    <h4 class="header center-align" style="color:#00acc1;"><%=plant.name%> Status Update</h4>
                    <div class="input-field" id="plant_statuses_event" >
-                   <select name="plant[statuses][event]" form="newplant">
+                   <select name="plant[statuses][event]" form="newplant-<%=plant.id%>">
                      <option value="" disabled selected>Select an event</option>
                      <option class="water_status" value="Watered" id="watered">Watered</option>
                      <option class="water_status" value="Pruned" id="pruned">Pruned</option>
@@ -142,10 +142,10 @@
                    </div>
 
                  <label for="status-date">Select the Event date</label>
-                 <input type="text" class="datepicker" id="status-date" name="plant[statuses][event_date]" form="newplant">
+                 <input type="text" class="datepicker" id="status-date" name="plant[statuses][event_date]" form="newplant-<%=plant.id%>">
 
                      <div class="input-field">
-                     <select name="plant[statuses][leaf_status]" form="newplant">
+                     <select name="plant[statuses][leaf_status]" form="newplant-<%=plant.id%>">
                        <option value="" disabled selected>How's your plant looking?</option>
                        <option value="New Growth">New Growth</option>
                        <option value="Healthy">Healthy</option>
@@ -160,7 +160,7 @@
                      </div>
 
                      <div class="input-field">
-                     <select name="plant[statuses][soil_status]" form="newplant">
+                     <select name="plant[statuses][soil_status]" form="newplant-<%=plant.id%>">
                        <option value="" disabled selected>How's the soil feel?</option>
                        <option value="Extremely Dry">Extremely Dry</option>
                        <option value="Dry">Dry</option>
