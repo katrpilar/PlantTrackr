@@ -1,10 +1,30 @@
 <nav>
    <div class="nav-wrapper green darken-1">
      <a href="#!" class="brand-logo">PlantTrackr</a>
+     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+     <%if session[:user_id]%>
+       <ul class="right hide-on-med-and-down">
+         <li><a href="/plants">Browse</a></li>
+         <li><a href="/greenhouse">My Plants</a></li>
+         <li class="active"><a href="/plants/new">Create Plant</a></li>
+         <li><a href="/logout" class="waves-effect waves-light btn light-green darken-4">Logout</a></li>
+       </ul>
+       <ul class="side-nav green darken-1" id="mobile-demo">
+          <li><a href="/plants" style="color:white;">Browse</a></li>
+          <li><a href="/greenhouse" style="color:white;">My Plants</a></li>
+          <li class="active"><a href="/plants/new" style="color:white;">Create Plant</a></li>
+          <li><a href="/logout" class="waves-effect waves-light btn light-green darken-4">Logout</a></li>
+        </ul>
+    <%else%>
      <ul class="right hide-on-med-and-down">
        <li><a href="/signup" class="waves-effect waves-light btn  deep-orange lighten-1">Signup</a></li>
        <li><a href="/login" class="waves-effect waves-light btn cyan darken-1">Login</a></li>
      </ul>
+     <ul class="side-nav green darken-1" id="mobile-demo">
+       <li><a href="/signup" class="waves-effect waves-light btn  deep-orange lighten-1">Signup</a></li>
+       <li><a href="/login" class="waves-effect waves-light btn cyan darken-1">Login</a></li>
+     </ul>
+     <%end%>
    </div>
  </nav>
 
